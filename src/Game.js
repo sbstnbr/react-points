@@ -1,21 +1,26 @@
 import React from 'react';
 import data from './data';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 function Score() {
   return (
-    <div>
-      <Player data={data.score[0]}/>
-      <Player data={data.score[1]}/>
-    </div>
+    <Grid item xs={12}>
+      <Grid container>
+        <Player data={data.score[0]}/>
+        <Player data={data.score[1]}/>
+      </Grid>
+    </Grid>
   )
 }
 
 function Player(props) {
   return (
-    <div>
+    <Grid item xs={6}>        
         {props.data.name}
         {props.data.points}
-    </div>
+    </Grid>
   )
 }
 
@@ -28,7 +33,7 @@ function Rounds(){
       <ul>
         {rounds}
       </ul>
-      <button>New Round</button>
+      <Button variant="contained">New Round</Button>
     </div>
   )
 }
@@ -53,10 +58,10 @@ class RoundDetails extends React.Component {
 class Game extends React.Component {
   render(){
     return (
-      <div>
+      <Grid container>
         <Score/>
         <Rounds/>
-      </div>
+      </Grid>
     )
   }
 }
