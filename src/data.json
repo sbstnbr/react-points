@@ -1,0 +1,16 @@
+{
+  "type": "Scopa",
+  "score": [
+    {"name": "Jess", "points": 5},
+    {"name": "Seb", "points": 3}
+  ],
+  "rounds":[
+    {
+      "id": 0,
+      "result": [2,2]
+    },{
+      "id": 1,
+      "result": [3,1]
+    }
+  ]
+}
