@@ -1,5 +1,4 @@
 import React from 'react';
-import data from './data';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
@@ -15,8 +14,8 @@ class Score extends React.Component {
     return (
       <Grid item xs={12}>
       <Grid container>
-        <Player name={this.props.score[0].name} points={this.calculatePoints(0)}/>
-        <Player name={this.props.score[0].name} points={this.calculatePoints(1)}/>
+        <Player name="Jess" points={this.calculatePoints(0)}/>
+        <Player name="Seb" points={this.calculatePoints(1)}/>
       </Grid>
     </Grid>
     )
@@ -44,7 +43,11 @@ class Rounds extends React.Component {
   }
   render(){
     const rounds = this.props.rounds.map(round => 
-      <RoundDetails key={round.id} data={round}/>
+      <RoundDetails 
+        key={round.id}
+        id={round.id}
+        result={round.result}
+      />
     );
     return (
       <Grid container direction={"column"} spacing={16}>
@@ -64,14 +67,14 @@ class Rounds extends React.Component {
 
 class RoundDetails extends React.Component {
   calculatePoints(i){
-    return this.props.data.result[i];
+    return this.props.result[i];
   }
   render (){
     return (
       <Grid item>
         <Card>
           <CardContent>
-            {this.props.data.id}
+            {this.props.id}
             -
             {this.calculatePoints(0)}
             /
@@ -87,7 +90,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...data,
       rounds:[]
     };
     this.createRound = this.createRound.bind(this);
