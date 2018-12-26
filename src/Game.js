@@ -27,18 +27,34 @@ function Player(props) {
   )
 }
 
-function Rounds(props){
-  const rounds = props.rounds.map(round => 
-    <RoundDetails key={round.id} data={round}/>
-  );
-  return (
-    <Grid container direction={"column"} spacing={16}>
-      {rounds}
-      <Grid item>
-        <Button variant="contained">New Round</Button>
+class Rounds extends React.Component {
+  constructor(props) {
+    super(props);
+    // This binding is necessary to make `this` work in the callback
+    this.createRound = this.createRound.bind(this);
+  }
+
+  createRound(){
+    return alert(this.props)
+  }
+  render(){
+    const rounds = this.props.rounds.map(round => 
+      <RoundDetails key={round.id} data={round}/>
+    );
+    return (
+      <Grid container direction={"column"} spacing={16}>
+        {rounds}
+        <Grid item>
+          <Button 
+            variant="contained"
+            onClick={this.props.handleNewRound}
+          >
+            New Round
+          </Button>
+        </Grid>
       </Grid>
-    </Grid>
-  )
+    )
+  }
 }
 
 class RoundDetails extends React.Component {
@@ -68,12 +84,25 @@ class Game extends React.Component {
     this.state = {
       ...data
     };
+    this.createRound = this.createRound.bind(this);
+  }
+
+  createRound(){
+    return this.setState({
+      rounds: this.state.rounds.concat([{
+        "id": this.state.rounds.length,
+        "result": [0,0]
+      }])
+    });
   }
   render(){
     return (
       <Grid container spacing={16}>
         <Score score={this.state.score}/>
-        <Rounds rounds={this.state.rounds}/>
+        <Rounds 
+          rounds={this.state.rounds}
+          handleNewRound={this.createRound}
+        />
       </Grid>
     )
   }

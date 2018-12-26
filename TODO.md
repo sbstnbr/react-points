@@ -1,3 +1,4 @@
 # TODO
 
-- [ ] Setup grid
+- [x] Setup grid
+- [ ] Implement new round
