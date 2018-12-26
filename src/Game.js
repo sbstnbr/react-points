@@ -4,6 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import Cancel from '@material-ui/icons/Cancel';
+ 
 
 
 class Score extends React.Component {
@@ -39,6 +42,7 @@ class Rounds extends React.Component {
         id={round.id}
         result={round.result}
         handleAddPoint={this.props.handleAddPoint}
+        handleResetRound={this.props.handleResetRound}
         rounds={this.props.rounds}
       />
     );
@@ -78,6 +82,11 @@ class RoundDetails extends React.Component {
                   {this.props.result[1]}
                 </Button>
               </Grid>
+              <Grid item>
+                <IconButton onClick={() => this.props.handleResetRound(this.props.rounds,this.props.id)}>
+                  <Cancel/>
+                </IconButton>
+              </Grid>
             </Grid>
           </CardContent>
         </Card>
@@ -94,6 +103,7 @@ class Game extends React.Component {
     };
     this.createRound = this.createRound.bind(this);
     this.addPoint = this.addPoint.bind(this);
+    this.resetRound = this.resetRound.bind(this);
   }
 
   createRound(){
@@ -116,6 +126,16 @@ class Game extends React.Component {
     })
   }
 
+  resetRound(rounds,roundId){
+    let updatedRound = {...rounds[roundId]};
+    updatedRound.result = [0,0];
+    let updatedRounds = rounds.slice();
+    updatedRounds.splice(roundId,1,updatedRound);
+    return this.setState({
+      rounds: updatedRounds
+    })
+  }
+
   render(){
     return (
       <Grid container spacing={16}>
@@ -124,6 +144,7 @@ class Game extends React.Component {
           rounds={this.state.rounds}
           handleNewRound={this.createRound}
           handleAddPoint={this.addPoint}
+          handleResetRound={this.resetRound}
         />
       </Grid>
     )

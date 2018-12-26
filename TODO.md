@@ -6,10 +6,10 @@
 - [x] Set result of a round
 - [x] Add vscode react
 - [x] Deploy to firebase
-- [ ] Reset score round
-- [ ] Reset game
+- [x] Reset score round
 
 - [ ] Define name of players
 - [ ] Add tests
+- [ ] Reset game
 
 - [ ] Refactor points calculation - roundDetails/score
