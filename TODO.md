@@ -1,4 +1,6 @@
 # TODO
 
 - [x] Setup grid
-- [ ] Implement new round
+- [x] Implement new round
+- [x] Calculate score from rounds
+- [ ] Set result of a round

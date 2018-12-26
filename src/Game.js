@@ -7,15 +7,20 @@ import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 
 
-function Score(props) {
-  return (
-    <Grid item xs={12}>
-      <Grid container alignContent={"center"}>
-        <Player name={props.score[0].name} points={props.score[0].points}/>
-        <Player name={props.score[1].name} points={props.score[1].points}/>
+class Score extends React.Component {
+  calculatePoints(i){
+    return this.props.rounds.map(round=> round.result[i]).reduce((acc,val) => acc+val,0)
+  }
+  render(){
+    return (
+      <Grid item xs={12}>
+      <Grid container>
+        <Player name={this.props.score[0].name} points={this.calculatePoints(0)}/>
+        <Player name={this.props.score[0].name} points={this.calculatePoints(1)}/>
       </Grid>
     </Grid>
-  )
+    )
+  }
 }
 
 function Player(props) {
@@ -92,14 +97,14 @@ class Game extends React.Component {
     return this.setState({
       rounds: this.state.rounds.concat([{
         "id": this.state.rounds.length,
-        "result": [0,0]
+        "result": [this.state.rounds.length,0]
       }])
     });
   }
   render(){
     return (
       <Grid container spacing={16}>
-        <Score score={this.state.score}/>
+        <Score score={this.state.score} rounds={this.state.rounds}/>
         <Rounds 
           rounds={this.state.rounds}
           handleNewRound={this.createRound}
