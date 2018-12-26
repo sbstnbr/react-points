@@ -32,21 +32,14 @@ function Player(props) {
 }
 
 class Rounds extends React.Component {
-  constructor(props) {
-    super(props);
-    // This binding is necessary to make `this` work in the callback
-    this.createRound = this.createRound.bind(this);
-  }
-
-  createRound(){
-    return alert(this.props)
-  }
   render(){
     const rounds = this.props.rounds.map(round => 
       <RoundDetails 
         key={round.id}
         id={round.id}
         result={round.result}
+        handleAddPoint={this.props.handleAddPoint}
+        rounds={this.props.rounds}
       />
     );
     return (
@@ -66,19 +59,26 @@ class Rounds extends React.Component {
 }
 
 class RoundDetails extends React.Component {
-  calculatePoints(i){
-    return this.props.result[i];
-  }
   render (){
     return (
       <Grid item>
         <Card>
           <CardContent>
-            {this.props.id}
-            -
-            {this.calculatePoints(0)}
-            /
-            {this.calculatePoints(1)}
+            <Grid container spacing={16}>
+              <Grid item>
+                {this.props.id}
+              </Grid>
+              <Grid item>
+                <Button variant="contained" onClick={() => this.props.handleAddPoint(this.props.rounds,this.props.id,0)}>
+                  {this.props.result[0]}
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="contained" onClick={() => this.props.handleAddPoint(this.props.rounds,this.props.id,1)}>
+                  {this.props.result[1]}
+                </Button>
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
       </Grid>
@@ -93,16 +93,29 @@ class Game extends React.Component {
       rounds:[]
     };
     this.createRound = this.createRound.bind(this);
+    this.addPoint = this.addPoint.bind(this);
   }
 
   createRound(){
     return this.setState({
       rounds: this.state.rounds.concat([{
         "id": this.state.rounds.length,
-        "result": [this.state.rounds.length,0]
+        "result": [0,0]
       }])
     });
   }
+
+  addPoint(rounds,roundId,player){
+    //TODO: Improve
+    let updatedRound = {...rounds[roundId]};
+    updatedRound.result[player]+=1;
+    let updatedRounds = rounds.slice();
+    updatedRounds.splice(roundId,1,updatedRound);
+    return this.setState({
+      rounds: updatedRounds
+    })
+  }
+
   render(){
     return (
       <Grid container spacing={16}>
@@ -110,6 +123,7 @@ class Game extends React.Component {
         <Rounds 
           rounds={this.state.rounds}
           handleNewRound={this.createRound}
+          handleAddPoint={this.addPoint}
         />
       </Grid>
     )
