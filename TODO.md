@@ -5,7 +5,7 @@
 - [x] Calculate score from rounds
 - [x] Set result of a round
 - [x] Add vscode react
-- [ ] Deploy
+- [x] Deploy to firebase
 - [ ] Reset score round
 - [ ] Reset game
 
