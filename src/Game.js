@@ -82,7 +82,8 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...data
+      ...data,
+      rounds:[]
     };
     this.createRound = this.createRound.bind(this);
   }
