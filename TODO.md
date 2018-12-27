@@ -7,9 +7,12 @@
 - [x] Add vscode react
 - [x] Deploy to firebase
 - [x] Reset score round
+- [x] Define name of players
 
-- [ ] Define name of players
+- [ ] Break app into component files
+- [ ] CI with Github
 - [ ] Add tests
 - [ ] Reset game
+- [ ] Improve design
 
 - [ ] Refactor points calculation - roundDetails/score

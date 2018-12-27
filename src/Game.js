@@ -6,7 +6,11 @@ import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Cancel from '@material-ui/icons/Cancel';
- 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
 
 
 class Score extends React.Component {
@@ -14,24 +18,89 @@ class Score extends React.Component {
     return this.props.rounds.map(round=> round.result[i]).reduce((acc,val) => acc+val,0)
   }
   render(){
+    const players = this.props.players.map((player,id) =>
+      <Player 
+        name={player}
+        points={this.calculatePoints(id)}
+        handleUpdatePlayerName={this.props.handleUpdatePlayerName}
+        players={this.props.players}
+        id={id}
+        key={id}
+      />
+    );
     return (
       <Grid item xs={12}>
       <Grid container>
-        <Player name="Jess" points={this.calculatePoints(0)}/>
-        <Player name="Seb" points={this.calculatePoints(1)}/>
+        {players}
       </Grid>
     </Grid>
     )
   }
 }
 
-function Player(props) {
-  return (
-    <Grid item xs={6}>        
-        <Avatar>{props.name.split('')[0]}</Avatar>
-        {props.points}
-    </Grid>
-  )
+class Player extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      name: this.props.name
+    };;
+  }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleValidateNewName = () => {
+    this.props.handleUpdatePlayerName(this.props.players,this.props.id,this.state.name);
+    this.setState({ open: false });
+  };
+
+  handleChange = (e) => {
+    this.setState({name: e.target.value});
+  }
+
+  render(){
+    return (
+      <Grid item xs={6}>        
+          {/* <Avatar onClick={()=> > */}
+          <Avatar onClick={this.handleClickOpen}>
+            {this.props.name.split('')[0]}
+          </Avatar>
+          {this.props.points}
+          <Dialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Update player name</DialogTitle>
+            <DialogContent>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="newName"
+                label="New Name"
+                fullWidth
+                onChange={this.handleChange}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="secondary">
+                Cancel
+              </Button>
+              <Button onClick={this.handleValidateNewName} color="primary">
+                Validate
+              </Button>
+            </DialogActions>
+          </Dialog>
+      </Grid>
+    )
+  }
+  
 }
 
 class Rounds extends React.Component {
@@ -99,11 +168,13 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rounds:[]
+      rounds:[],
+      players: ["Jess", "Seb"]
     };
     this.createRound = this.createRound.bind(this);
     this.addPoint = this.addPoint.bind(this);
     this.resetRound = this.resetRound.bind(this);
+    this.updatePlayerName = this.updatePlayerName.bind(this);
   }
 
   createRound(){
@@ -136,10 +207,23 @@ class Game extends React.Component {
     })
   }
 
+  updatePlayerName(players,id,newName){
+    let updatedPlayers = players.slice();
+    updatedPlayers[id]=newName;
+    return this.setState({
+      players: updatedPlayers
+    })
+  }
+
   render(){
     return (
       <Grid container spacing={16}>
-        <Score score={this.state.score} rounds={this.state.rounds}/>
+        <Score 
+          score={this.state.score} 
+          rounds={this.state.rounds}
+          players={this.state.players}
+          handleUpdatePlayerName={this.updatePlayerName}
+        />
         <Rounds 
           rounds={this.state.rounds}
           handleNewRound={this.createRound}
