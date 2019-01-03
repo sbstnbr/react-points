@@ -9,11 +9,12 @@
 - [x] Reset score round
 - [x] Define name of players
 - [x] Push to github
-- [ ] Break app into component files
+- [x] Break app into component files
 
 - [ ] CI with Github
 - [ ] Add tests
-- [ ] Reset game
 - [ ] Improve design
+- [ ] Adapt for whist
 
+- [ ] Reset game
 - [ ] Refactor points calculation - roundDetails/score

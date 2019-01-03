@@ -20,9 +20,9 @@ class Score extends React.Component {
     );
     return (
       <Grid item xs={12}>
-      <Grid container>
-        {players}
-      </Grid>
+        <Grid container>
+          {players}
+        </Grid>
     </Grid>
     )
   }

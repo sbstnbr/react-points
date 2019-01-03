@@ -36,8 +36,8 @@ class ScorePlayer extends React.Component {
 
   render(){
     return (
-      <Grid item xs={6}>        
-          {/* <Avatar onClick={()=> > */}
+      <Grid item xs={6}> 
+        <Grid container direction="column" alignItems="center"> 
           <Avatar onClick={this.handleClickOpen}>
             {this.props.name.split('')[0]}
           </Avatar>
@@ -67,6 +67,7 @@ class ScorePlayer extends React.Component {
               </Button>
             </DialogActions>
           </Dialog>
+        </Grid>       
       </Grid>
     )
   }

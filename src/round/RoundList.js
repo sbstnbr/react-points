@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Add from '@material-ui/icons/Add';
 
 import RoundDetails from './RoundDetails';
 
@@ -17,15 +18,14 @@ class RoundList extends React.Component {
       />
     );
     return (
-      <Grid container direction={"column"} spacing={16}>
+      <Grid container direction={"column"} alignItems="center" spacing={16}>
         {rounds}
         <Grid item>
-          <Button 
-            variant="contained"
+          <IconButton 
             onClick={this.props.handleNewRound}
           >
-            New Round
-          </Button>
+            <Add/>
+          </IconButton>
         </Grid>
       </Grid>
     )
