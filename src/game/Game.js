@@ -59,7 +59,6 @@ class Game extends React.Component {
     return (
       <Grid container spacing={16}>
         <Score 
-          score={this.state.score} 
           rounds={this.state.rounds}
           players={this.state.players}
           handleUpdatePlayerName={this.updatePlayerName}

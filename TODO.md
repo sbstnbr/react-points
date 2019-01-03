@@ -10,11 +10,12 @@
 - [x] Define name of players
 - [x] Push to github
 - [x] Break app into component files
+- [x] Improve design
+
+- [ ] Add tests
+- [ ] Adapt for whist
+- [ ] Add proper state handling
+- [ ] Add icon
 
 - [ ] CI with Github
-- [ ] Add tests
-- [ ] Improve design
-- [ ] Adapt for whist
-
-- [ ] Reset game
 - [ ] Refactor points calculation - roundDetails/score
