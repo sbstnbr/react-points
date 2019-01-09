@@ -11,11 +11,18 @@
 - [x] Push to github
 - [x] Break app into component files
 - [x] Improve design
+- [x] Add tests
+- [x] Choose game type
 
-- [ ] Add tests
-- [ ] Adapt for whist
-- [ ] Add proper state handling
+- [ ] Add X players
+- [ ] Adapt rounds for X players
+- [ ] Allow negative points for Wist
+
+- [ ] Save bets
+
 - [ ] Add icon
-
+- [ ] Add color for round winner
+- [ ] Who's turn is it ?
+- [ ] Add proper state handling
 - [ ] CI with Github
 - [ ] Refactor points calculation - roundDetails/score

@@ -23,3 +23,12 @@ it('should add new rounds', ()=> {
   wrapper.instance().createRound();
   expect(wrapper.state().rounds.length).toEqual(3);
 })
+
+it('should set the game type', () => {
+  const wrapper = shallow(game);
+  const event = {
+    target: {value:'Wist'}
+  }
+  wrapper.instance().setGameType()(event);
+  expect(wrapper.state().gameType).toEqual('Wist');
+})

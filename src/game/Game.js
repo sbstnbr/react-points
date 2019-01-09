@@ -1,5 +1,9 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import FilledInput from '@material-ui/core/FilledInput';
 
 import RoundList from './../round/RoundList';
 import Score from './../score/Score';
@@ -8,6 +12,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameType: 'Scopa',
       rounds:[],
       players: ["Jess", "Seb"]
     };
@@ -15,6 +20,7 @@ class Game extends React.Component {
     this.addPoint = this.addPoint.bind(this);
     this.resetRound = this.resetRound.bind(this);
     this.updatePlayerName = this.updatePlayerName.bind(this);
+    this.setGameType = this.setGameType.bind(this);
   }
 
   createRound(){
@@ -55,9 +61,26 @@ class Game extends React.Component {
     })
   }
 
+  setGameType = () => event => {
+    this.setState({gameType: event.target.value})
+    console.log(event)
+  }
+
   render(){
     return (
       <Grid container spacing={16}>
+        <FormControl variant="filled">
+          <InputLabel htmlFor="filled-gameType-native-simple">Game Type</InputLabel>
+          <Select
+            native
+            value={this.state.gameType}
+            onChange={this.setGameType()}
+            input={<FilledInput name="gameType" id="filled-gameType-native-simple" />}
+          >
+            <option value="Scopa">Scopa</option>
+            <option value="Wist">Wist</option>
+          </Select>
+        </FormControl>
         <Score 
           rounds={this.state.rounds}
           players={this.state.players}
