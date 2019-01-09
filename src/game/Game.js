@@ -31,7 +31,7 @@ class Game extends React.Component {
     return this.setState({
       rounds: this.state.rounds.concat([{
         "id": this.state.rounds.length,
-        "result": [0,0]
+        "result": new Array(this.state.players.length).fill(0)
       }])
     });
   }
@@ -70,7 +70,6 @@ class Game extends React.Component {
       gameType: event.target.value,
       ...this.defaultState
     })
-    console.log(event)
   }
 
   render(){
