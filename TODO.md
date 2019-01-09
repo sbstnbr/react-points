@@ -14,6 +14,8 @@
 - [x] Add tests
 - [x] Choose game type
 
+- [ ] Check correct usage of state read inside functions - createRound
+
 - [ ] Add X players
 - [ ] Adapt rounds for X players
 - [ ] Allow negative points for Wist
@@ -26,3 +28,4 @@
 - [ ] Add proper state handling
 - [ ] CI with Github
 - [ ] Refactor points calculation - roundDetails/score
+- [ ] Use hooks

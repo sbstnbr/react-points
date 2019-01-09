@@ -49,7 +49,7 @@ class Game extends React.Component {
 
   resetRound(rounds,roundId){
     let updatedRound = {...rounds[roundId]};
-    updatedRound.result = [0,0];
+    updatedRound.result = new Array(this.state.players.length).fill(0);
     let updatedRounds = rounds.slice();
     updatedRounds.splice(roundId,1,updatedRound);
     return this.setState({
