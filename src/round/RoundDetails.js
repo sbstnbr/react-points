@@ -15,9 +15,6 @@ class RoundDetails extends React.Component {
           <CardContent>
             <Grid container spacing={16}>
               <Grid item>
-                {this.props.id}
-              </Grid>
-              <Grid item>
                 <Button variant="contained" onClick={() => this.props.handleAddPoint(this.props.rounds,this.props.id,0)}>
                   {this.props.result[0]}
                 </Button>

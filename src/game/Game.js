@@ -69,18 +69,20 @@ class Game extends React.Component {
   render(){
     return (
       <Grid container spacing={16}>
-        <FormControl variant="filled">
-          <InputLabel htmlFor="filled-gameType-native-simple">Game Type</InputLabel>
-          <Select
-            native
-            value={this.state.gameType}
-            onChange={this.setGameType()}
-            input={<FilledInput name="gameType" id="filled-gameType-native-simple" />}
-          >
-            <option value="Scopa">Scopa</option>
-            <option value="Wist">Wist</option>
-          </Select>
-        </FormControl>
+        <Grid item xs={12}>
+          <FormControl variant="filled" style={{width:'100%'}}>
+            <InputLabel htmlFor="filled-gameType-native-simple">Game Type</InputLabel>
+            <Select
+              native
+              value={this.state.gameType}
+              onChange={this.setGameType()}
+              input={<FilledInput name="gameType" id="filled-gameType-native-simple" />}
+            >
+              <option value="Scopa">Scopa</option>
+              <option value="Wist">Wist</option>
+            </Select>
+          </FormControl>
+        </Grid>
         <Score 
           rounds={this.state.rounds}
           players={this.state.players}
