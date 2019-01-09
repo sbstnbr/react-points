@@ -13,8 +13,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       gameType: 'Scopa',
-      rounds:[],
-      players: ["Jess", "Seb"]
+      ...this.defaultState
     };
     this.createRound = this.createRound.bind(this);
     this.addPoint = this.addPoint.bind(this);
@@ -22,6 +21,11 @@ class Game extends React.Component {
     this.updatePlayerName = this.updatePlayerName.bind(this);
     this.setGameType = this.setGameType.bind(this);
   }
+
+  defaultState = {
+    rounds:[],
+    players: ["Jess", "Seb"]
+  };
 
   createRound(){
     return this.setState({
@@ -62,7 +66,10 @@ class Game extends React.Component {
   }
 
   setGameType = () => event => {
-    this.setState({gameType: event.target.value})
+    this.setState({
+      gameType: event.target.value,
+      ...this.defaultState
+    })
     console.log(event)
   }
 
