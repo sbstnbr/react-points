@@ -14,10 +14,10 @@
 - [x] Add tests
 - [x] Choose game type
 
-- [ ] Check correct usage of state read inside functions - createRound
+- [ ] Add X players for wist
+- [ ] Adapt round points for wist
 
-- [ ] Add X players
-- [ ] Adapt rounds for X players
+- [ ] Check correct usage of state read inside functions - createRound
 - [ ] Allow negative points for Wist
 
 - [ ] Save bets

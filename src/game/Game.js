@@ -1,19 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import FilledInput from '@material-ui/core/FilledInput';
 
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -26,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 import RoundList from './../round/RoundList';
 import Score from './../score/Score';
+import GameDrawer from './GameDrawer';
 
 const styles = {
   root: {
@@ -113,22 +101,7 @@ class Game extends React.Component {
   };
 
   render(){
-    const gameList = (
-      <div>
-        <List>
-          {['Scopa', 'Wist'].map((text, index) => (
-            <ListItem 
-              button
-              key={text}
-              onClick={this.setGameType(text)}
-            >
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    );
+    
     return (
       <div className={this.props.classes.root}>
           
@@ -144,21 +117,11 @@ class Game extends React.Component {
               </Typography>
             </Toolbar>
           </AppBar>
-          <SwipeableDrawer
+          <GameDrawer
+            setGameType={this.setGameType}
+            toggleDrawer={this.toggleDrawer}
             open={this.state.open}
-            onClose={this.toggleDrawer(false)}
-            onOpen={this.toggleDrawer(true)}
-          >
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={this.toggleDrawer(false)}
-              onKeyDown={this.toggleDrawer(false)}
-              style={{width:'250px'}}
-            >
-              {gameList}
-            </div>
-          </SwipeableDrawer>
+          />
           <Score 
             rounds={this.state.rounds}
             players={this.state.players}
