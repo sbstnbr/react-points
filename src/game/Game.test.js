@@ -18,6 +18,7 @@ it('renders without crashing', () => {
 
 it('should add new rounds', ()=> {
   const wrapper = shallow(game);
+  console.log(wrapper.instance());
   wrapper.instance().createRound();
   wrapper.instance().createRound();
   wrapper.instance().createRound();
@@ -26,9 +27,7 @@ it('should add new rounds', ()=> {
 
 it('should set the game type', () => {
   const wrapper = shallow(game);
-  const event = {
-    target: {value:'Wist'}
-  }
-  wrapper.instance().setGameType()(event);
+  const gameType = 'Wist';
+  wrapper.instance().setGameType(gameType)();
   expect(wrapper.state().gameType).toEqual('Wist');
 })

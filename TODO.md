@@ -13,8 +13,8 @@
 - [x] Improve design
 - [x] Add tests
 - [x] Choose game type
-
 - [ ] Add X players for wist
+
 - [ ] Adapt round points for wist
 
 - [ ] Check correct usage of state read inside functions - createRound

@@ -68,6 +68,8 @@ class Game extends React.Component {
     })
   }
 
+  // addPlayer
+
   resetRound(rounds,roundId){
     let updatedRound = {...rounds[roundId]};
     updatedRound.result = new Array(this.state.players.length).fill(0);
@@ -103,7 +105,8 @@ class Game extends React.Component {
   render(){
     
     return (
-      <div className={this.props.classes.root}>
+      // <div className={this.props.classes.root}>
+      <div>
           
         <Grid container spacing={16}>
           <AppBar position="static">
@@ -112,7 +115,8 @@ class Game extends React.Component {
               <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" className={this.props.classes.grow}>
+              {/* <Typography variant="h6" color="inherit" className={this.props.classes.grow}> */}
+              <Typography variant="h6" color="inherit">
                 {this.state.gameType}
               </Typography>
             </Toolbar>
@@ -139,4 +143,5 @@ class Game extends React.Component {
   }
 }
 
-export default withStyles(styles)(Game);
+// export default withStyles(styles)(Game);
+export default Game;
