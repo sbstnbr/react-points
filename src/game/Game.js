@@ -70,7 +70,7 @@ class Game extends React.Component {
 
   addPlayer = (player) => {
     let updatedPlayers = this.state.players.slice();
-    updatedPlayers.push(player);
+    updatedPlayers.push('Bro');
     return this.setState({
       players: updatedPlayers
     })
@@ -136,6 +136,7 @@ class Game extends React.Component {
             rounds={this.state.rounds}
             players={this.state.players}
             handleUpdatePlayerName={this.updatePlayerName}
+            handleAddPlayer={this.addPlayer}
           />
           <RoundList 
             rounds={this.state.rounds}

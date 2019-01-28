@@ -35,7 +35,6 @@ it('should add a new player', () => {
   const wrapper = shallow(game);
   // const gameType = 'Wist';
   wrapper.instance().addPlayer('Bro');
-  console.log("PLAYERS",wrapper.state().players);
   expect(wrapper.state().players[2]).toEqual('Bro');
 })
 

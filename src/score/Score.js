@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-
+import IconButton from '@material-ui/core/IconButton';
+import Add from '@material-ui/icons/Add';
 import ScorePlayer from './ScorePlayer';
 
 class Score extends React.Component {
@@ -22,6 +23,11 @@ class Score extends React.Component {
       <Grid item xs={12}>
         <Grid container>
           {players}
+          <IconButton 
+            onClick={this.props.handleAddPlayer}
+          >
+            <Add/>
+          </IconButton>
         </Grid>
     </Grid>
     )
