@@ -18,7 +18,6 @@ it('renders without crashing', () => {
 
 it('should add new rounds', ()=> {
   const wrapper = shallow(game);
-  console.log(wrapper.instance());
   wrapper.instance().createRound();
   wrapper.instance().createRound();
   wrapper.instance().createRound();
@@ -31,3 +30,12 @@ it('should set the game type', () => {
   wrapper.instance().setGameType(gameType)();
   expect(wrapper.state().gameType).toEqual('Wist');
 })
+
+it('should add a new player', () => {
+  const wrapper = shallow(game);
+  // const gameType = 'Wist';
+  wrapper.instance().addPlayer('Bro');
+  console.log("PLAYERS",wrapper.state().players);
+  expect(wrapper.state().players[2]).toEqual('Bro');
+})
+

@@ -68,7 +68,13 @@ class Game extends React.Component {
     })
   }
 
-  // addPlayer
+  addPlayer = (player) => {
+    let updatedPlayers = this.state.players.slice();
+    updatedPlayers.push(player);
+    return this.setState({
+      players: updatedPlayers
+    })
+  }
 
   resetRound(rounds,roundId){
     let updatedRound = {...rounds[roundId]};
