@@ -7,14 +7,14 @@ import Button from '@material-ui/core/Button';
 
 class RoundDetails extends React.Component {
   render (){
-    const roundResults = this.props.result.map((result,id)=>
-    <Grid item key={id}>
+    const roundResults = this.props.result.map((result,playerId)=>
+    <Grid item key={playerId}>
       <Button 
         variant="contained"
-        onClick={() => this.props.handleAddPoint(this.props.rounds,this.props.id,id)}
+        onClick={() => this.props.handleAddPoint(this.props.rounds,this.props.id,playerId)}
         onContextMenu={(e) => {
           e.preventDefault();
-          return this.props.handleResetRound(this.props.id)}
+          return this.props.handleResetRound(this.props.id,playerId)}
         }
       >
         {result}
