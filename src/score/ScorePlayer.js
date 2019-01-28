@@ -36,7 +36,7 @@ class ScorePlayer extends React.Component {
 
   render(){
     return (
-      <Grid item xs={6}> 
+      <Grid item xs={6} style={{minWidth:'30%'}}> 
         <Grid container direction="column" alignItems="center"> 
           <Avatar onClick={this.handleClickOpen}>
             {this.props.name.split('')[0]}

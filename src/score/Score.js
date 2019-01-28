@@ -29,7 +29,7 @@ class Score extends React.Component {
     ;
     return (
       <Grid item xs={12}>
-        <Grid container>
+        <Grid container wrap="nowrap">
           {players}
           {addPlayerButton}
         </Grid>
