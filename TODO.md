@@ -13,7 +13,7 @@
 - [x] Improve design
 - [x] Add tests
 - [x] Choose game type
-- [ ] Add X players for wist
+- [x] Add X players for wist
 
 - [ ] Adapt round points for wist
 
