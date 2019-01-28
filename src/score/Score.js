@@ -19,15 +19,19 @@ class Score extends React.Component {
         key={id}
       />
     );
+    const addPlayerButton = this.props.allowAddPlayer ?
+      <IconButton 
+        onClick={this.props.handleAddPlayer}
+      >
+        <Add/>
+      </IconButton>
+      : null
+    ;
     return (
       <Grid item xs={12}>
         <Grid container>
           {players}
-          <IconButton 
-            onClick={this.props.handleAddPlayer}
-          >
-            <Add/>
-          </IconButton>
+          {addPlayerButton}
         </Grid>
     </Grid>
     )

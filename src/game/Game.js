@@ -48,6 +48,15 @@ class Game extends React.Component {
     open: false
   };
 
+  rules = {
+    Scopa: {
+      allowAddPlayer: false
+    },
+    Wist: {
+      allowAddPlayer: true
+    }
+  }
+
   createRound(){
     return this.setState({
       rounds: this.state.rounds.concat([{
@@ -137,6 +146,7 @@ class Game extends React.Component {
             players={this.state.players}
             handleUpdatePlayerName={this.updatePlayerName}
             handleAddPlayer={this.addPlayer}
+            allowAddPlayer={this.rules[this.state.gameType].allowAddPlayer}
           />
           <RoundList 
             rounds={this.state.rounds}
