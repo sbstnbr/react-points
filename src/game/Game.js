@@ -120,25 +120,22 @@ class Game extends React.Component {
     return (
       // <div className={this.props.classes.root}>
       <div>
-          
-        <Grid container spacing={16}>
-          <AppBar position="static">
-          {/* <AppBar> */}
-            <Toolbar>
-              <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
-                <MenuIcon />
-              </IconButton>
-              {/* <Typography variant="h6" color="inherit" className={this.props.classes.grow}> */}
-              <Typography variant="h6" color="inherit">
-                {this.state.gameType}
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <GameDrawer
-            setGameType={this.setGameType}
-            toggleDrawer={this.toggleDrawer}
-            open={this.state.open}
-          />
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" color="inherit">
+              {this.state.gameType}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <GameDrawer
+          setGameType={this.setGameType}
+          toggleDrawer={this.toggleDrawer}
+          open={this.state.open}
+        />
+        <Grid container spacing={16} alignItems="center" style={{padding:"20px"}}>
           <Score 
             rounds={this.state.rounds}
             players={this.state.players}

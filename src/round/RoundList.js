@@ -18,7 +18,7 @@ class RoundList extends React.Component {
       />
     );
     return (
-      <Grid container direction={"column"} alignItems="center" spacing={16}>
+      <Grid item container direction={"column"} alignItems="center" spacing={16}>
         {rounds}
         <Grid item>
           <IconButton 

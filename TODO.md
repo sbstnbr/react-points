@@ -15,13 +15,13 @@
 - [x] Choose game type
 - [x] Add X players for wist
 
+- [ ] Fix context issue on iPhone
+
 - [ ] Adapt round points for wist
 
 - [ ] Check correct usage of state read inside functions - createRound
-- [ ] Allow negative points for Wist
 
 - [ ] Save bets
-
 - [ ] Add icon
 - [ ] Add color for round winner
 - [ ] Who's turn is it ?

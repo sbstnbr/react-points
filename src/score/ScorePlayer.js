@@ -7,6 +7,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 class ScorePlayer extends React.Component {
   constructor(props) {
@@ -41,7 +42,9 @@ class ScorePlayer extends React.Component {
           <Avatar onClick={this.handleClickOpen}>
             {this.props.name.split('')[0]}
           </Avatar>
-          {this.props.points}
+          <Typography>
+            {this.props.points}
+          </Typography>
           <Dialog
             open={this.state.open}
             onClose={this.handleClose}
