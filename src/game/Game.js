@@ -4,12 +4,11 @@ import Grid from '@material-ui/core/Grid';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
 import { withStyles } from '@material-ui/core/styles';
-
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import RoundList from './../round/RoundList';
 import Score from './../score/Score';
@@ -116,41 +115,46 @@ class Game extends React.Component {
   };
 
   render(){
-    
-    return (
-      // <div className={this.props.classes.root}>
-      <div>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit">
-              {this.state.gameType}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <GameDrawer
-          setGameType={this.setGameType}
-          toggleDrawer={this.toggleDrawer}
-          open={this.state.open}
+    const Game = () => (
+      <Grid container spacing={16} alignItems="center" style={{padding:"20px"}}>
+        <Score 
+          rounds={this.state.rounds}
+          players={this.state.players}
+          handleUpdatePlayerName={this.updatePlayerName}
+          handleAddPlayer={this.addPlayer}
+          allowAddPlayer={this.rules[this.state.gameType].allowAddPlayer}
         />
-        <Grid container spacing={16} alignItems="center" style={{padding:"20px"}}>
-          <Score 
-            rounds={this.state.rounds}
-            players={this.state.players}
-            handleUpdatePlayerName={this.updatePlayerName}
-            handleAddPlayer={this.addPlayer}
-            allowAddPlayer={this.rules[this.state.gameType].allowAddPlayer}
+        <RoundList 
+          rounds={this.state.rounds}
+          handleNewRound={this.createRound}
+          handleAddPoint={this.addPoint}
+          handleResetRound={this.resetRound}
+        />
+      </Grid>
+    )
+    return (
+      <Router>
+        <div>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit">
+                {this.state.gameType}
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <GameDrawer
+            setGameType={this.setGameType}
+            toggleDrawer={this.toggleDrawer}
+            open={this.state.open}
           />
-          <RoundList 
-            rounds={this.state.rounds}
-            handleNewRound={this.createRound}
-            handleAddPoint={this.addPoint}
-            handleResetRound={this.resetRound}
-          />
-        </Grid>
-      </div>
+          <Route exact path="/" component={Game} />
+          <Route path="/Scopa" component={Game} />
+          <Route path="/Wist" component={Game} />
+        </div>
+      </Router>
     )
   }
 }

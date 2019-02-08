@@ -15,11 +15,10 @@
 - [x] Choose game type
 - [x] Add X players for wist
 
+- [ ] Add react router
 - [ ] Fix context issue on iPhone
 
 - [ ] Adapt round points for wist
-
-- [ ] Check correct usage of state read inside functions - createRound
 
 - [ ] Save bets
 - [ ] Add icon
