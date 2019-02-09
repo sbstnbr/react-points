@@ -14,6 +14,7 @@
 - [x] Add tests
 - [x] Choose game type
 - [x] Add X players for wist
+- [x] Add eslint
 
 - [ ] Add react router
 - [ ] Fix context issue on iPhone

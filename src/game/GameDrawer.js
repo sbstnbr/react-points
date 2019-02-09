@@ -10,12 +10,18 @@ import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 
 function GameDrawer(props) {
-  const { open, setGameType, toggleDrawer } = props;
+  const { open, resetGame, toggleDrawer } = props;
   const gameList = (
     <div>
       <List>
         {['Scopa', 'Wist'].map((text, index) => (
-          <ListItem button key={text} component={Link} to={`/${text}`} onClick={setGameType(text)}>
+          <ListItem
+            button
+            key={text}
+            component={Link}
+            to={`/${text}`}
+            onClick={() => resetGame(text)}
+          >
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -24,12 +30,16 @@ function GameDrawer(props) {
     </div>
   );
   return (
-    <SwipeableDrawer open={open} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
+    <SwipeableDrawer
+      open={open}
+      onClose={() => toggleDrawer(false)}
+      onOpen={() => toggleDrawer(true)}
+    >
       <div
         tabIndex={0}
         role="button"
-        onClick={toggleDrawer(false)}
-        onKeyDown={toggleDrawer(false)}
+        onClick={() => toggleDrawer(false)}
+        onKeyDown={() => toggleDrawer(false)}
         style={{ width: '250px' }}
       >
         {gameList}
@@ -40,7 +50,7 @@ function GameDrawer(props) {
 
 GameDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
-  setGameType: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
 };
 
