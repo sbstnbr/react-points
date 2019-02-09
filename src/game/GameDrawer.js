@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -8,7 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default class GameDrawer extends Component {
   render() {
@@ -16,11 +16,11 @@ export default class GameDrawer extends Component {
       <div>
         <List>
           {['Scopa', 'Wist'].map((text, index) => (
-            <ListItem 
+            <ListItem
               button
               key={text}
-              component={Link} 
-              to={"/"+text}
+              component={Link}
+              to={`/${text}`}
               onClick={this.props.setGameType(text)}
             >
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -32,20 +32,20 @@ export default class GameDrawer extends Component {
     );
     return (
       <SwipeableDrawer
-            open={this.props.open}
-            onClose={this.props.toggleDrawer(false)}
-            onOpen={this.props.toggleDrawer(true)}
-          >
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={this.props.toggleDrawer(false)}
-              onKeyDown={this.props.toggleDrawer(false)}
-              style={{width:'250px'}}
-            >
-              {gameList}
-            </div>
-          </SwipeableDrawer>
-    )
+        open={this.props.open}
+        onClose={this.props.toggleDrawer(false)}
+        onOpen={this.props.toggleDrawer(true)}
+      >
+        <div
+          tabIndex={0}
+          role="button"
+          onClick={this.props.toggleDrawer(false)}
+          onKeyDown={this.props.toggleDrawer(false)}
+          style={{ width: '250px' }}
+        >
+          {gameList}
+        </div>
+      </SwipeableDrawer>
+    );
   }
 }

@@ -5,12 +5,13 @@ import Add from '@material-ui/icons/Add';
 import ScorePlayer from './ScorePlayer';
 
 class Score extends React.Component {
-  calculatePoints(i){
-    return this.props.rounds.map(round=> round.result[i]).reduce((acc,val) => acc+val,0)
+  calculatePoints(i) {
+    return this.props.rounds.map(round => round.result[i]).reduce((acc, val) => acc + val, 0);
   }
-  render(){
-    const players = this.props.players.map((player,id) =>
-      <ScorePlayer 
+
+  render() {
+    const players = this.props.players.map((player, id) => (
+      <ScorePlayer
         name={player}
         points={this.calculatePoints(id)}
         handleUpdatePlayerName={this.props.handleUpdatePlayerName}
@@ -18,21 +19,22 @@ class Score extends React.Component {
         id={id}
         key={id}
       />
-    );
-    const addPlayerButton = this.props.allowAddPlayer ?
-      <IconButton 
-        onClick={this.props.handleAddPlayer}
-      >
-        <Add/>
-      </IconButton>
-      : null
-    ;
+    ));
+    const addPlayerButton = this.props.allowAddPlayer
+      ? (
+        <IconButton
+          onClick={this.props.handleAddPlayer}
+        >
+          <Add />
+        </IconButton>
+      )
+      : null;
     return (
       <Grid item xs={12} container wrap="nowrap">
         {players}
         {addPlayerButton}
       </Grid>
-    )
+    );
   }
 }
 

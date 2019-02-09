@@ -14,7 +14,7 @@ class ScorePlayer extends React.Component {
     super(props);
     this.state = {
       open: false,
-      name: this.props.name
+      name: this.props.name,
     };
   }
 
@@ -27,18 +27,18 @@ class ScorePlayer extends React.Component {
   };
 
   handleValidateNewName = () => {
-    this.props.handleUpdatePlayerName(this.props.players,this.props.id,this.state.name);
+    this.props.handleUpdatePlayerName(this.props.players, this.props.id, this.state.name);
     this.setState({ open: false });
   };
 
   handleChange = (e) => {
-    this.setState({name: e.target.value});
+    this.setState({ name: e.target.value });
   }
 
-  render(){
+  render() {
     return (
-      <Grid item xs={6} style={{minWidth:'30%'}}> 
-        <Grid container direction="column" alignItems="center"> 
+      <Grid item xs={6} style={{ minWidth: '30%' }}>
+        <Grid container direction="column" alignItems="center">
           <Avatar onClick={this.handleClickOpen}>
             {this.props.name.split('')[0]}
           </Avatar>
@@ -70,9 +70,9 @@ class ScorePlayer extends React.Component {
               </Button>
             </DialogActions>
           </Dialog>
-        </Grid>       
+        </Grid>
       </Grid>
-    )
+    );
   }
 }
 

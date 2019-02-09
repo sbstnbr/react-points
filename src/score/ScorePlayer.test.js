@@ -1,16 +1,13 @@
 import React from 'react';
 
-import ScorePlayer from './ScorePlayer';
 import { shallow } from 'enzyme';
+import ScorePlayer from './ScorePlayer';
 
-const scorePlayer = <ScorePlayer
-  name="Test"
-// points={this.calculatePoints(id)}
-// handleUpdatePlayerName={this.props.handleUpdatePlayerName}
-// players={this.props.players}
-// id={id}
-// key={id}
+const scorePlayer = (
+  <ScorePlayer
+    name="Test"
   />
+);
 
 it('renders without crashing', () => {
   shallow(scorePlayer);

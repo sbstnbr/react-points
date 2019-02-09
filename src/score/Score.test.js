@@ -1,15 +1,17 @@
 import React from 'react';
 
-import Score from './Score';
 import { shallow } from 'enzyme';
+import Score from './Score';
 
-const score = <Score
-    players={["Jess","Seb"]}
+const score = (
+  <Score
+    players={['Jess', 'Seb']}
     rounds={[
-      {id:1, result:[3,0]},
-      {id:2, result:[5,0]},
+      { id: 1, result: [3, 0] },
+      { id: 2, result: [5, 0] },
     ]}
   />
+);
 
 it('renders without crashing', () => {
   shallow(score);
