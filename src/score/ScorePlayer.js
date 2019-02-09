@@ -8,13 +8,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 class ScorePlayer extends React.Component {
   constructor(props) {
     super(props);
+    const { name } = this.props;
     this.state = {
       open: false,
-      name: this.props.name,
+      name,
     };
   }
 
@@ -27,29 +29,25 @@ class ScorePlayer extends React.Component {
   };
 
   handleValidateNewName = () => {
-    this.props.handleUpdatePlayerName(this.props.players, this.props.id, this.state.name);
+    const { handleUpdatePlayerName, players, id } = this.props;
+    const { name } = this.state;
+    handleUpdatePlayerName(players, id, name);
     this.setState({ open: false });
   };
 
   handleChange = (e) => {
     this.setState({ name: e.target.value });
-  }
+  };
 
   render() {
+    const { name, points } = this.props;
+    const { open } = this.state;
     return (
       <Grid item xs={6} style={{ minWidth: '30%' }}>
         <Grid container direction="column" alignItems="center">
-          <Avatar onClick={this.handleClickOpen}>
-            {this.props.name.split('')[0]}
-          </Avatar>
-          <Typography>
-            {this.props.points}
-          </Typography>
-          <Dialog
-            open={this.state.open}
-            onClose={this.handleClose}
-            aria-labelledby="form-dialog-title"
-          >
+          <Avatar onClick={this.handleClickOpen}>{name.split('')[0]}</Avatar>
+          <Typography>{points}</Typography>
+          <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Update player name</DialogTitle>
             <DialogContent>
               <TextField
@@ -75,5 +73,13 @@ class ScorePlayer extends React.Component {
     );
   }
 }
+
+ScorePlayer.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  points: PropTypes.number.isRequired,
+  players: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleUpdatePlayerName: PropTypes.func.isRequired,
+};
 
 export default ScorePlayer;
