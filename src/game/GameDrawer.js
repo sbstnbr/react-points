@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,42 +9,39 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 
-export default class GameDrawer extends Component {
-  render() {
-    const gameList = (
-      <div>
-        <List>
-          {['Scopa', 'Wist'].map((text, index) => (
-            <ListItem
-              button
-              key={text}
-              component={Link}
-              to={`/${text}`}
-              onClick={this.props.setGameType(text)}
-            >
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    );
-    return (
-      <SwipeableDrawer
-        open={this.props.open}
-        onClose={this.props.toggleDrawer(false)}
-        onOpen={this.props.toggleDrawer(true)}
+function GameDrawer(props) {
+  const { open, setGameType, toggleDrawer } = props;
+  const gameList = (
+    <div>
+      <List>
+        {['Scopa', 'Wist'].map((text, index) => (
+          <ListItem button key={text} component={Link} to={`/${text}`} onClick={setGameType(text)}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+  return (
+    <SwipeableDrawer open={open} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>
+      <div
+        tabIndex={0}
+        role="button"
+        onClick={toggleDrawer(false)}
+        onKeyDown={toggleDrawer(false)}
+        style={{ width: '250px' }}
       >
-        <div
-          tabIndex={0}
-          role="button"
-          onClick={this.props.toggleDrawer(false)}
-          onKeyDown={this.props.toggleDrawer(false)}
-          style={{ width: '250px' }}
-        >
-          {gameList}
-        </div>
-      </SwipeableDrawer>
-    );
-  }
+        {gameList}
+      </div>
+    </SwipeableDrawer>
+  );
 }
+
+GameDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setGameType: PropTypes.func.isRequired,
+  toggleDrawer: PropTypes.func.isRequired,
+};
+
+export default GameDrawer;
