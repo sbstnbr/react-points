@@ -9,6 +9,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  avatar: {
+    backgroundColor: theme.palette.primary.dark,
+  },
+});
 
 class ScorePlayer extends React.Component {
   constructor(props) {
@@ -40,13 +47,15 @@ class ScorePlayer extends React.Component {
   };
 
   render() {
-    const { name, points } = this.props;
+    const { classes, name, points } = this.props;
     const { open } = this.state;
     return (
       <Grid item xs={6} style={{ minWidth: '30%' }}>
         <Grid container direction="column" alignItems="center">
-          <Avatar onClick={this.handleClickOpen}>{name.split('')[0]}</Avatar>
-          <Typography>{points}</Typography>
+          <Avatar className={classes.avatar} onClick={this.handleClickOpen}>
+            {name.split('')[0]}
+          </Avatar>
+          <Typography variant="body1">{points}</Typography>
           <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Update player name</DialogTitle>
             <DialogContent>
@@ -75,6 +84,7 @@ class ScorePlayer extends React.Component {
 }
 
 ScorePlayer.propTypes = {
+  classes: PropTypes.shape({ avatar: PropTypes.string.isRequired }).isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired,
@@ -82,4 +92,4 @@ ScorePlayer.propTypes = {
   handleUpdatePlayerName: PropTypes.func.isRequired,
 };
 
-export default ScorePlayer;
+export default withStyles(styles)(ScorePlayer);

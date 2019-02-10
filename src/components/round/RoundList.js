@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Add from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/core/styles';
 
 import RoundDetails from './RoundDetails';
 
+const styles = theme => ({
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
+  },
+});
+
 function RoundList(props) {
   const {
-    rounds, handleAddPoint, handleResetRound, handleNewRound,
+    classes, rounds, handleAddPoint, handleResetRound, handleNewRound,
   } = props;
   const Rounds = rounds.map(round => (
     <RoundDetails
@@ -24,19 +33,20 @@ function RoundList(props) {
     <Grid item container direction="column" alignItems="center" spacing={16}>
       {Rounds}
       <Grid item>
-        <IconButton onClick={handleNewRound}>
-          <Add />
-        </IconButton>
+        <Fab onClick={handleNewRound} color="secondary" className={classes.fab}>
+          <AddIcon />
+        </Fab>
       </Grid>
     </Grid>
   );
 }
 
 RoundList.propTypes = {
+  classes: PropTypes.shape({ fab: PropTypes.string.isRequired }).isRequired,
   rounds: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleAddPoint: PropTypes.func.isRequired,
   handleResetRound: PropTypes.func.isRequired,
   handleNewRound: PropTypes.func.isRequired,
 };
 
-export default RoundList;
+export default withStyles(styles)(RoundList);
