@@ -23,7 +23,7 @@ class Score extends React.Component {
       />
     ));
     const addPlayerButton = allowAddPlayer ? (
-      <IconButton onClick={handleAddPlayer}>
+      <IconButton onClick={() => handleAddPlayer()}>
         <Add />
       </IconButton>
     ) : null;

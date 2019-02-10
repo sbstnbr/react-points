@@ -32,7 +32,7 @@ class RoundDetails extends React.Component {
       >
         <Button
           variant="contained"
-          onClick={() => handleAddPoint(rounds, id, playerId)}
+          onClick={() => handleAddPoint(id, playerId)}
           onContextMenu={(e) => {
             e.preventDefault();
             return handleResetRound(id, playerId);

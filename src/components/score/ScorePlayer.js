@@ -36,9 +36,9 @@ class ScorePlayer extends React.Component {
   };
 
   handleValidateNewName = () => {
-    const { handleUpdatePlayerName, players, id } = this.props;
+    const { handleUpdatePlayerName, id } = this.props;
     const { name } = this.state;
-    handleUpdatePlayerName(players, id, name);
+    handleUpdatePlayerName(id, name);
     this.setState({ open: false });
   };
 

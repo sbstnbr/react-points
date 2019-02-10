@@ -30,3 +30,10 @@ it('should add a new player', () => {
   wrapper.instance().addPlayer('Bro');
   expect(wrapper.state().players[2]).toEqual('Bro');
 });
+
+it('should update a player name', () => {
+  const wrapper = shallow(app);
+  // const gameType = 'Wist';
+  wrapper.instance().updatePlayerName(0, 'Bro');
+  expect(wrapper.state().players[0]).toEqual('Bro');
+});

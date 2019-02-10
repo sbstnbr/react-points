@@ -54,46 +54,28 @@ class App extends React.Component {
     });
   };
 
-  addPlayer = (player = 'Bro') => {
-    // TODO: Use player
-    const { players } = this.state;
-    const updatedPlayers = players.slice();
-    updatedPlayers.push(player);
-    return this.setState({
-      players: updatedPlayers,
-    });
-  };
+  addPlayer = (player = 'Bro') => this.setState(state => ({ players: [...state.players, player] }));
 
-  updatePlayerName = (players, id, newName) => {
-    const updatedPlayers = players.slice();
-    updatedPlayers[id] = newName;
-    return this.setState({
-      players: updatedPlayers,
-    });
-  };
+  updatePlayerName = (id, newName) => this.setState((state) => {
+    const players = state.players.slice();
+    players[id] = newName;
+    return { players };
+  });
 
-  addPoint = (rounds, roundId, player) => {
-    // TODO: Improve
-    const updatedRound = { ...rounds[roundId] };
-    updatedRound.result[player] += 1;
-    const updatedRounds = rounds.slice();
-    updatedRounds.splice(roundId, 1, updatedRound);
-    return this.setState({
-      rounds: updatedRounds,
-    });
-  };
+  addPoint = (roundId, player) => this.setState((state) => {
+    const rounds = state.rounds.slice();
+    rounds[roundId].result[player] += 1;
+    return rounds;
+  });
 
-  createRound = () => {
-    const { rounds, players } = this.state;
-    return this.setState({
-      rounds: rounds.concat([
-        {
-          id: rounds.length,
-          result: new Array(players.length).fill(0),
-        },
-      ]),
-    });
-  };
+  createRound = () => this.setState((state) => {
+    const newRound = {
+      id: state.rounds.length,
+      result: new Array(state.players.length).fill(0),
+    };
+    const rounds = [...state.rounds, newRound];
+    return { rounds };
+  });
 
   resetRound = (roundId, playerId) => {
     const { rounds } = this.state;
