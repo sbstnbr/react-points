@@ -10,6 +10,9 @@ const styles = {
   result: {
     // justify: 'center',
   },
+  round: {
+    width: '100%',
+  },
 };
 
 class RoundDetails extends React.Component {
@@ -18,7 +21,15 @@ class RoundDetails extends React.Component {
       classes, result, rounds, id, handleAddPoint, handleResetRound,
     } = this.props;
     const roundResults = result.map((score, playerId) => (
-      <Grid item key={playerId} className={classes.result}>
+      <Grid
+        item
+        container
+        key={playerId}
+        className={classes.result}
+        xs={6}
+        alignItems="center"
+        direction="column"
+      >
         <Button
           variant="contained"
           onClick={() => handleAddPoint(rounds, id, playerId)}
@@ -32,10 +43,10 @@ class RoundDetails extends React.Component {
       </Grid>
     ));
     return (
-      <Grid item>
+      <Grid item xs={12} className={classes.round}>
         <Card>
           <CardContent>
-            <Grid container spacing={16} justify="center">
+            <Grid container spacing={16}>
               {roundResults}
             </Grid>
           </CardContent>
