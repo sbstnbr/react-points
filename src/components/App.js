@@ -54,12 +54,11 @@ class App extends React.Component {
     });
   };
 
-  addPlayer = (player) => {
+  addPlayer = (player = 'Bro') => {
     // TODO: Use player
     const { players } = this.state;
     const updatedPlayers = players.slice();
-    updatedPlayers.push('Bro');
-    console.log(player);
+    updatedPlayers.push(player);
     return this.setState({
       players: updatedPlayers,
     });

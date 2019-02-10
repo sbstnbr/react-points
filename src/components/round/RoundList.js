@@ -30,13 +30,11 @@ function RoundList(props) {
     />
   ));
   return (
-    <Grid item container direction="column" alignItems="center" spacing={16}>
+    <Grid item container direction="column" alignItems="stretch" spacing={16}>
       {Rounds}
-      <Grid item>
-        <Fab onClick={handleNewRound} color="secondary" className={classes.fab}>
-          <AddIcon />
-        </Fab>
-      </Grid>
+      <Fab onClick={handleNewRound} color="secondary" className={classes.fab}>
+        <AddIcon />
+      </Fab>
     </Grid>
   );
 }

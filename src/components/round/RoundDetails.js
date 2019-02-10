@@ -4,14 +4,21 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  result: {
+    // justify: 'center',
+  },
+};
 
 class RoundDetails extends React.Component {
   render() {
     const {
-      result, rounds, id, handleAddPoint, handleResetRound,
+      classes, result, rounds, id, handleAddPoint, handleResetRound,
     } = this.props;
     const roundResults = result.map((score, playerId) => (
-      <Grid item key={playerId}>
+      <Grid item key={playerId} className={classes.result}>
         <Button
           variant="contained"
           onClick={() => handleAddPoint(rounds, id, playerId)}
@@ -28,7 +35,7 @@ class RoundDetails extends React.Component {
       <Grid item>
         <Card>
           <CardContent>
-            <Grid container spacing={16}>
+            <Grid container spacing={16} justify="center">
               {roundResults}
             </Grid>
           </CardContent>
@@ -46,4 +53,4 @@ RoundDetails.propTypes = {
   handleResetRound: PropTypes.func.isRequired,
 };
 
-export default RoundDetails;
+export default withStyles(styles)(RoundDetails);
