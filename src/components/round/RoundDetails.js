@@ -18,7 +18,7 @@ const styles = {
 class RoundDetails extends React.Component {
   render() {
     const {
-      classes, result, rounds, id, handleAddPoint, handleResetRound,
+      classes, result, id, handleAddPoint, handleResetRound,
     } = this.props;
     const roundResults = result.map((score, playerId) => (
       <Grid
@@ -57,8 +57,8 @@ class RoundDetails extends React.Component {
 }
 
 RoundDetails.propTypes = {
+  classes: PropTypes.shape({ result: PropTypes.string.isRequired }).isRequired,
   result: PropTypes.arrayOf(PropTypes.number).isRequired,
-  rounds: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.number.isRequired,
   handleAddPoint: PropTypes.func.isRequired,
   handleResetRound: PropTypes.func.isRequired,

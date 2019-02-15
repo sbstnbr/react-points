@@ -15,8 +15,8 @@
 - [x] Choose game type
 - [x] Add X players for wist
 - [x] Add eslint
+- [x] Add player id
 
-- [ ] Add player id
 - [ ] Move fab out of roundlist
 - [ ] Add react router
 - [ ] Fix context issue on iPhone

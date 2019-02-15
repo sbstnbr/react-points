@@ -43,10 +43,6 @@ class App extends React.Component {
       gameType: 'Scopa',
       ...this.defaultState,
     };
-    this.createRound = this.createRound.bind(this);
-    this.addPoint = this.addPoint.bind(this);
-    this.resetRound = this.resetRound.bind(this);
-    this.updatePlayerName = this.updatePlayerName.bind(this);
   }
 
   resetGame = (gameType = 'Scopa') => {
@@ -63,8 +59,8 @@ class App extends React.Component {
     });
   };
 
-  addPlayer = (player = 'Bro') => this.setState(state => ({
-    players: [...state.players, { id: state.players.length, name: player }],
+  addPlayer = (name = 'Bro') => this.setState(state => ({
+    players: [...state.players, { id: state.players.length, name }],
   }));
 
   updatePlayerName = (id, newName) => this.setState((state) => {
@@ -112,7 +108,7 @@ class App extends React.Component {
     const {
       rounds, players, gameType, open,
     } = this.state;
-    const Game = () => (
+    const ScopaGame = () => (
       <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
         <Score
           rounds={rounds}
@@ -143,9 +139,9 @@ class App extends React.Component {
             </Toolbar>
           </AppBar>
           <GameDrawer resetGame={this.resetGame} toggleDrawer={this.toggleDrawer} open={open} />
-          <Route exact path="/" component={Game} />
-          <Route path="/Scopa" component={Game} />
-          <Route path="/Wist" component={Game} />
+          <Route exact path="/" component={ScopaGame} />
+          <Route path="/Scopa" component={ScopaGame} />
+          <Route path="/Wist" component={ScopaGame} />
         </div>
       </Router>
     );
