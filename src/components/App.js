@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import RoundList from './round/RoundList';
-import Score from './score/Score';
+import ScoreList from './score/ScoreList';
 import GameDrawer from './game/GameDrawer';
 
 class App extends React.Component {
@@ -110,7 +110,7 @@ class App extends React.Component {
     } = this.state;
     const ScopaGame = () => (
       <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
-        <Score
+        <ScoreList
           rounds={rounds}
           players={players}
           handleUpdatePlayerName={this.updatePlayerName}

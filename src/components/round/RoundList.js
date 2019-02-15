@@ -5,7 +5,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 
-import RoundDetails from './RoundDetails';
+import Round from './Round';
 
 const styles = theme => ({
   fab: {
@@ -20,13 +20,12 @@ function RoundList(props) {
     classes, rounds, handleAddPoint, handleResetRound, handleNewRound,
   } = props;
   const Rounds = rounds.map(round => (
-    <RoundDetails
+    <Round
       key={round.id}
       id={round.id}
       result={round.result}
       handleAddPoint={handleAddPoint}
       handleResetRound={handleResetRound}
-      rounds={props.rounds}
     />
   ));
   return (

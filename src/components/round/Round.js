@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-class RoundDetails extends React.Component {
+class Round extends React.Component {
   render() {
     const {
       classes, result, id, handleAddPoint, handleResetRound,
@@ -56,7 +56,7 @@ class RoundDetails extends React.Component {
   }
 }
 
-RoundDetails.propTypes = {
+Round.propTypes = {
   classes: PropTypes.shape({ result: PropTypes.string.isRequired }).isRequired,
   result: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,
@@ -64,4 +64,4 @@ RoundDetails.propTypes = {
   handleResetRound: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(RoundDetails);
+export default withStyles(styles)(Round);

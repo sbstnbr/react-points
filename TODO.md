@@ -13,21 +13,22 @@
 - [x] Improve design
 - [x] Add tests
 - [x] Choose game type
-- [x] Add X players for wist
 - [x] Add eslint
 - [x] Add player id
 
+- [ ] Implement wist
+
+  - [x] Add X players for wist
+  - [ ] Add react router
+  - [ ] Adapt round points for wist
+
 - [ ] Move fab out of roundlist
-- [ ] Add react router
 - [ ] Fix context issue on iPhone
 
-- [ ] Adapt round points for wist
-
-- [ ] Save bets
-- [ ] Add icon
-- [ ] Add color for round winner
-- [ ] Who's turn is it ?
-- [ ] Add proper state handling
-- [ ] CI with Github
-- [ ] Refactor points calculation - roundDetails/score
-- [ ] Use hooks
+* [ ] Save bets
+* [ ] Add icon
+* [ ] Add color for round winner
+* [ ] Who's turn is it ?
+* [ ] Add proper state handling
+* [ ] CI with Github
+* [ ] Use hooks
