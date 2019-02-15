@@ -15,7 +15,16 @@ import GameDrawer from './game/GameDrawer';
 class App extends React.Component {
   defaultState = {
     rounds: [],
-    players: ['Jess', 'Seb'],
+    players: [
+      {
+        id: 0,
+        name: 'Jess',
+      },
+      {
+        id: 1,
+        name: 'Seb',
+      },
+    ],
     open: false,
   };
 
@@ -54,17 +63,23 @@ class App extends React.Component {
     });
   };
 
-  addPlayer = (player = 'Bro') => this.setState(state => ({ players: [...state.players, player] }));
+  addPlayer = (player = 'Bro') => this.setState(state => ({
+    players: [...state.players, { id: state.players.length, name: player }],
+  }));
 
   updatePlayerName = (id, newName) => this.setState((state) => {
-    const players = state.players.slice();
-    players[id] = newName;
+    const players = state.players.map((player) => {
+      if (player.id === id) {
+        return { ...player, name: newName };
+      }
+      return player;
+    });
     return { players };
   });
 
-  addPoint = (roundId, player) => this.setState((state) => {
+  addPoint = (roundId, playerId) => this.setState((state) => {
     const rounds = state.rounds.slice();
-    rounds[roundId].result[player] += 1;
+    rounds[roundId].result[playerId] += 1;
     return rounds;
   });
 
@@ -77,14 +92,21 @@ class App extends React.Component {
     return { rounds };
   });
 
-  resetRound = (roundId, playerId) => {
-    const { rounds } = this.state;
-    const updatedRounds = rounds.slice();
-    updatedRounds[roundId].result[playerId] = 0;
-    return this.setState({
-      rounds: updatedRounds,
+  resetRound = (roundId, playerId) => this.setState((state) => {
+    const rounds = state.rounds.map((round) => {
+      if (round.id === roundId) {
+        const newResult = round.result.map((result, id) => {
+          if (id === playerId) {
+            return 0;
+          }
+          return result;
+        });
+        return { ...round, result: newResult };
+      }
+      return round;
     });
-  };
+    return { rounds };
+  });
 
   render() {
     const {

@@ -14,12 +14,10 @@ class Score extends React.Component {
     } = this.props;
     const Players = players.map((player, id) => (
       <ScorePlayer
-        name={player}
+        player={player}
         points={this.calculatePoints(rounds, id)}
         handleUpdatePlayerName={handleUpdatePlayerName}
-        players={players}
-        id={id}
-        key={id}
+        key={player.id}
       />
     ));
     const addPlayerButton = allowAddPlayer ? (
@@ -38,8 +36,10 @@ class Score extends React.Component {
 
 Score.propTypes = {
   rounds: PropTypes.arrayOf(PropTypes.object).isRequired,
+  players: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.number.isRequired, name: PropTypes.string.isRequired }),
+  ).isRequired,
   allowAddPlayer: PropTypes.bool.isRequired,
-  players: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleUpdatePlayerName: PropTypes.func.isRequired,
   handleAddPlayer: PropTypes.func.isRequired,
 };

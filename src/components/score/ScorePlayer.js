@@ -36,9 +36,9 @@ class ScorePlayer extends React.Component {
   };
 
   handleValidateNewName = () => {
-    const { handleUpdatePlayerName, id } = this.props;
+    const { handleUpdatePlayerName, player } = this.props;
     const { name } = this.state;
-    handleUpdatePlayerName(id, name);
+    handleUpdatePlayerName(player.id, name);
     this.setState({ open: false });
   };
 
@@ -47,13 +47,13 @@ class ScorePlayer extends React.Component {
   };
 
   render() {
-    const { classes, name, points } = this.props;
+    const { classes, player, points } = this.props;
     const { open } = this.state;
     return (
       <Grid item xs={6} style={{ minWidth: '30%' }}>
         <Grid container direction="column" alignItems="center">
           <Avatar className={classes.avatar} onClick={this.handleClickOpen}>
-            {name.split('')[0]}
+            {player.name.split('')[0]}
           </Avatar>
           <Typography variant="body1">{points}</Typography>
           <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
@@ -85,10 +85,11 @@ class ScorePlayer extends React.Component {
 
 ScorePlayer.propTypes = {
   classes: PropTypes.shape({ avatar: PropTypes.string.isRequired }).isRequired,
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  player: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   points: PropTypes.number.isRequired,
-  players: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleUpdatePlayerName: PropTypes.func.isRequired,
 };
 
