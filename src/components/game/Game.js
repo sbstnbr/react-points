@@ -47,18 +47,9 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameType: 'Scopa',
       ...this.defaultState,
     };
   }
-
-  resetGame = (gameType = 'Scopa') => {
-    this.toggleDrawer(false);
-    return this.setState({
-      gameType,
-      ...this.defaultState,
-    });
-  };
 
   toggleDrawer = (open) => {
     this.setState({
@@ -121,14 +112,12 @@ class Game extends React.Component {
   });
 
   render() {
-    const {
-      rounds, players, gameType, open,
-    } = this.state;
-    const { classes } = this.props;
+    const { rounds, players, open } = this.state;
+    const { classes, gameType } = this.props;
     return (
       <div>
         <GameBar gameType={gameType} toggleDrawer={this.toggleDrawer} />
-        <GameDrawer resetGame={this.resetGame} toggleDrawer={this.toggleDrawer} open={open} />
+        <GameDrawer toggleDrawer={this.toggleDrawer} open={open} />
         <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
           <ScoreList
             rounds={rounds}

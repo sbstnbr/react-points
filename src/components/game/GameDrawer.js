@@ -10,18 +10,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 
 function GameDrawer(props) {
-  const { open, resetGame, toggleDrawer } = props;
+  const { open, toggleDrawer } = props;
   const gameList = (
     <div>
       <List>
         {['Scopa', 'Wist'].map((text, index) => (
-          <ListItem
-            button
-            key={text}
-            component={Link}
-            to={`/${text}`}
-            onClick={() => resetGame(text)}
-          >
+          <ListItem button key={text} component={Link} to={`/${text}`}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
@@ -50,7 +44,6 @@ function GameDrawer(props) {
 
 GameDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
-  resetGame: PropTypes.func.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
 };
 

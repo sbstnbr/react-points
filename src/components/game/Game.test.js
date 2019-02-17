@@ -24,12 +24,6 @@ it('should create a wist round', () => {
   expect(wrapper.state().rounds.length).toEqual(1);
 });
 
-it('should reset the game', () => {
-  const gameType = 'Wist';
-  wrapper.instance().resetGame(gameType);
-  expect(wrapper.state().gameType).toEqual('Wist');
-});
-
 it('should add a new player', () => {
   const expected = {
     id: 2,
