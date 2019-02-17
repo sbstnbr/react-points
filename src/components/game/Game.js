@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Score from '../score/Score';
 import RoundList from '../round/RoundList';
 import ScoreList from '../score/ScoreList';
 import GameBar from './GameBar';
@@ -122,7 +121,9 @@ class Game extends React.Component {
   });
 
   render() {
-    const { rounds, players, gameType, open } = this.state;
+    const {
+      rounds, players, gameType, open,
+    } = this.state;
     const { classes } = this.props;
     return (
       <div>
