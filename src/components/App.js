@@ -14,7 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 import RoundList from './round/RoundList';
 import ScoreList from './score/ScoreList';
 import GameDrawer from './game/GameDrawer';
-import Round from './round/Round';
+import ScopaRound from './round/ScopaRound';
 
 const styles = theme => ({
   fab: {
@@ -141,7 +141,7 @@ class App extends React.Component {
         />
         <RoundList>
           {rounds.map(round => (
-            <Round
+            <ScopaRound
               key={round.id}
               id={round.id}
               result={round.result}
