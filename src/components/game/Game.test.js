@@ -2,9 +2,9 @@ import React from 'react';
 
 import { createShallow } from '@material-ui/core/test-utils';
 
-import App from './App';
+import Game from './Game';
 
-const app = <App />;
+const app = <Game />;
 let wrapper;
 let shallow;
 beforeEach(() => {
