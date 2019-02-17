@@ -1,31 +1,37 @@
 import React from 'react';
 
-import { shallow } from 'enzyme';
+// import { shallow } from 'enzyme';
+import { createShallow } from '@material-ui/core/test-utils';
+
 import App from './App';
 
 const app = <App />;
-
-it('renders without crashing', () => {
-  shallow(app);
+let wrapper;
+let shallow;
+beforeEach(() => {
+  shallow = createShallow({ dive: true });
+  wrapper = shallow(app);
 });
 
 it('should add new rounds', () => {
-  const wrapper = shallow(app);
   wrapper.instance().createRound();
   wrapper.instance().createRound();
   wrapper.instance().createRound();
   expect(wrapper.state().rounds.length).toEqual(3);
 });
 
+it('should create a wist round', () => {
+  wrapper.instance().createWistRound();
+  expect(wrapper.state().rounds.length).toEqual(1);
+});
+
 it('should reset the game', () => {
-  const wrapper = shallow(app);
   const gameType = 'Wist';
   wrapper.instance().resetGame(gameType);
   expect(wrapper.state().gameType).toEqual('Wist');
 });
 
 it('should add a new player', () => {
-  const wrapper = shallow(app);
   const expected = {
     id: 2,
     name: 'Bro',
@@ -35,7 +41,6 @@ it('should add a new player', () => {
 });
 
 it('should update a player name', () => {
-  const wrapper = shallow(app);
   const expected = {
     id: 0,
     name: 'Tata',
@@ -45,7 +50,6 @@ it('should update a player name', () => {
 });
 
 it('should add a point to a player in a round', () => {
-  const wrapper = shallow(app);
   const expected = {
     id: 0,
     result: [1, 0],
@@ -56,7 +60,6 @@ it('should add a point to a player in a round', () => {
 });
 
 it('should reset a player point in a round', () => {
-  const wrapper = shallow(app);
   const expected = {
     id: 0,
     result: [0, 0],

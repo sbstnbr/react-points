@@ -7,10 +7,22 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import RoundList from './round/RoundList';
 import ScoreList from './score/ScoreList';
 import GameDrawer from './game/GameDrawer';
+import Round from './round/Round';
+
+const styles = theme => ({
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
+  },
+});
 
 class App extends React.Component {
   defaultState = {
@@ -88,6 +100,15 @@ class App extends React.Component {
     return { rounds };
   });
 
+  createWistRound = () => this.setState((state) => {
+    const newRound = {
+      id: state.rounds.length,
+      result: new Array(state.players.length).fill(0),
+    };
+    const rounds = [...state.rounds, newRound];
+    return { rounds };
+  });
+
   resetRound = (roundId, playerId) => this.setState((state) => {
     const rounds = state.rounds.map((round) => {
       if (round.id === roundId) {
@@ -108,6 +129,16 @@ class App extends React.Component {
     const {
       rounds, players, gameType, open,
     } = this.state;
+    const { classes } = this.props;
+    const Rounds = rounds.map(round => (
+      <Round
+        key={round.id}
+        id={round.id}
+        result={round.result}
+        handleAddPoint={this.addPoint}
+        handleResetRound={this.resetRound}
+      />
+    ));
     const ScopaGame = () => (
       <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
         <ScoreList
@@ -117,12 +148,12 @@ class App extends React.Component {
           handleAddPlayer={this.addPlayer}
           allowAddPlayer={this.rules[gameType].allowAddPlayer}
         />
-        <RoundList
-          rounds={rounds}
-          handleNewRound={this.createRound}
-          handleAddPoint={this.addPoint}
-          handleResetRound={this.resetRound}
-        />
+        <RoundList>
+          {Rounds}
+        </RoundList>
+        <Fab onClick={this.createRound} color="secondary" className={classes.fab}>
+          <AddIcon />
+        </Fab>
       </Grid>
     );
     return (
@@ -148,4 +179,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
