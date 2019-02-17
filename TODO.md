@@ -15,20 +15,20 @@
 - [x] Choose game type
 - [x] Add eslint
 - [x] Add player id
+- [x] Move fab out of roundlist
 
 - [ ] Implement wist
 
   - [x] Add X players for wist
-  - [ ] Add react router
+  - [x] Add react router
   - [ ] Adapt round points for wist
+  - [ ] Save bets
 
-- [ ] Move fab out of roundlist
 - [ ] Fix context issue on iPhone
 
-* [ ] Save bets
-* [ ] Add icon
-* [ ] Add color for round winner
-* [ ] Who's turn is it ?
-* [ ] Add proper state handling
-* [ ] CI with Github
-* [ ] Use hooks
+- [ ] Add icon
+- [ ] Add color for round winner
+- [ ] Who's turn is it ?
+- [ ] Add proper state handling
+- [ ] CI with Github
+- [ ] Use hooks

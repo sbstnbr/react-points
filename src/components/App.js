@@ -130,15 +130,6 @@ class App extends React.Component {
       rounds, players, gameType, open,
     } = this.state;
     const { classes } = this.props;
-    const Rounds = rounds.map(round => (
-      <Round
-        key={round.id}
-        id={round.id}
-        result={round.result}
-        handleAddPoint={this.addPoint}
-        handleResetRound={this.resetRound}
-      />
-    ));
     const ScopaGame = () => (
       <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
         <ScoreList
@@ -149,7 +140,15 @@ class App extends React.Component {
           allowAddPlayer={this.rules[gameType].allowAddPlayer}
         />
         <RoundList>
-          {Rounds}
+          {rounds.map(round => (
+            <Round
+              key={round.id}
+              id={round.id}
+              result={round.result}
+              handleAddPoint={this.addPoint}
+              handleResetRound={this.resetRound}
+            />
+          ))}
         </RoundList>
         <Fab onClick={this.createRound} color="secondary" className={classes.fab}>
           <AddIcon />
