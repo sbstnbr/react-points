@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -33,15 +34,6 @@ class Game extends React.Component {
       },
     ],
     open: false,
-  };
-
-  rules = {
-    Scopa: {
-      allowAddPlayer: false,
-    },
-    Wist: {
-      allowAddPlayer: true,
-    },
   };
 
   constructor(props) {
@@ -113,7 +105,7 @@ class Game extends React.Component {
 
   render() {
     const { rounds, players, open } = this.state;
-    const { classes, gameType } = this.props;
+    const { classes, gameType, allowAddPlayer } = this.props;
     return (
       <div>
         <GameBar gameType={gameType} toggleDrawer={this.toggleDrawer} />
@@ -124,7 +116,7 @@ class Game extends React.Component {
             players={players}
             handleUpdatePlayerName={this.updatePlayerName}
             handleAddPlayer={this.addPlayer}
-            allowAddPlayer={this.rules[gameType].allowAddPlayer}
+            allowAddPlayer={allowAddPlayer}
           />
           <RoundList>
             {rounds.map(round => (
@@ -145,5 +137,12 @@ class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  allowAddPlayer: PropTypes.bool,
+};
+Game.defaultProps = {
+  allowAddPlayer: false,
+};
 
 export default withStyles(styles)(Game);
