@@ -4,12 +4,13 @@ import { createShallow } from '@material-ui/core/test-utils';
 
 import Game from './Game';
 
-const app = <Game />;
+const game = <Game gameType="Scopa" />;
 let wrapper;
 let shallow;
+
 beforeEach(() => {
   shallow = createShallow({ dive: true });
-  wrapper = shallow(app);
+  wrapper = shallow(game);
 });
 
 it('should add new rounds', () => {
