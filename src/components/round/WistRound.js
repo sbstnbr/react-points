@@ -43,34 +43,34 @@ function WistRound(props) {
 
   const steps = getSteps();
 
-  function totalSteps() {
-    return steps.length;
-  }
+  // function totalSteps() {
+  //   return steps.length;
+  // }
 
-  function completedSteps() {
-    return Object.keys(completed).length;
-  }
+  // function completedSteps() {
+  //   return Object.keys(completed).length;
+  // }
 
-  function isLastStep() {
-    return activeStep === totalSteps() - 1;
-  }
+  // function isLastStep() {
+  //   return activeStep === totalSteps() - 1;
+  // }
 
-  function allStepsCompleted() {
-    return completedSteps() === totalSteps();
-  }
+  // function allStepsCompleted() {
+  //   return completedSteps() === totalSteps();
+  // }
 
-  function handleNext() {
-    let newActiveStep;
+  // function handleNext() {
+  //   let newActiveStep;
 
-    if (isLastStep() && !allStepsCompleted()) {
-      // It's the last step, but not all steps have been completed,
-      // find the first step that has been completed
-      newActiveStep = steps.findIndex((step, i) => !(i in completed));
-    } else {
-      newActiveStep = activeStep + 1;
-    }
-    setActiveStep(newActiveStep);
-  }
+  //   if (isLastStep() && !allStepsCompleted()) {
+  //     // It's the last step, but not all steps have been completed,
+  //     // find the first step that has been completed
+  //     newActiveStep = steps.findIndex((step, i) => !(i in completed));
+  //   } else {
+  //     newActiveStep = activeStep + 1;
+  //   }
+  //   setActiveStep(newActiveStep);
+  // }
 
   // function handleBack() {
   //   setActiveStep(prevActiveStep => prevActiveStep + 1);

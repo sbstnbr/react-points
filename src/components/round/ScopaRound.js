@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Round from './Round';
@@ -20,30 +21,32 @@ function ScopaRound(props) {
   } = props;
   return (
     <Round>
-      <Grid container spacing={16}>
-        {result.map((score, playerId) => (
-          <Grid
-            item
-            container
-            key={playerId}
-            className={classes.result}
-            xs={6}
-            alignItems="center"
-            direction="column"
-          >
-            <Button
-              variant="contained"
-              onClick={() => handleAddPoint(id, playerId)}
-              onContextMenu={(e) => {
-                e.preventDefault();
-                return handleResetRound(id, playerId);
-              }}
+      <CardContent>
+        <Grid container spacing={16}>
+          {result.map((score, playerId) => (
+            <Grid
+              item
+              container
+              key={playerId}
+              className={classes.result}
+              xs={6}
+              alignItems="center"
+              direction="column"
             >
-              {score}
-            </Button>
-          </Grid>
-        ))}
-      </Grid>
+              <Button
+                variant="contained"
+                onClick={() => handleAddPoint(id, playerId)}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  return handleResetRound(id, playerId);
+                }}
+              >
+                {score}
+              </Button>
+            </Grid>
+          ))}
+        </Grid>
+      </CardContent>
     </Round>
   );
 }

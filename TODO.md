@@ -28,6 +28,4 @@
 - [ ] Add icon
 - [ ] Add color for round winner
 - [ ] Who's turn is it ?
-- [ ] Add proper state handling
 - [ ] CI with Github
-- [ ] Use hooks
