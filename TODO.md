@@ -21,8 +21,7 @@
 
   - [x] Add X players for wist
   - [x] Add react router
-  - [ ] Adapt round points for wist
-  - [ ] Save bets
+  - [ ] Implement UI
 
 - [ ] Fix context issue on iPhone
 
