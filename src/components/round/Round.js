@@ -18,9 +18,7 @@ function Round(props) {
   const { classes, children } = props;
   return (
     <Grid item xs={12} className={classes.round}>
-      <Card>
-        <CardContent>{children}</CardContent>
-      </Card>
+      <Card>{children}</Card>
     </Grid>
   );
 }

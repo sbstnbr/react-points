@@ -6,14 +6,30 @@ import { withStyles } from '@material-ui/core';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
+import Collapse from '@material-ui/core/Collapse';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import IconButton from '@material-ui/core/IconButton';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import classnames from 'classnames';
 import Round from './Round';
 
-const styles = {
+const styles = theme => ({
   badge: {
     top: 'unset',
     bottom: '-50%',
   },
-};
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+});
 
 function getSteps() {
   return ['Bid', 'Result'];
@@ -23,6 +39,8 @@ function WistRound(props) {
   // const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState({});
+  const [expanded, setExpanded] = React.useState(false);
+
   const steps = getSteps();
 
   function totalSteps() {
@@ -73,46 +91,67 @@ function WistRound(props) {
   //   setActiveStep(0);
   //   setCompleted({});
   // }
+
+  function handleExpandClick() {
+    setExpanded(!expanded);
+  }
+
   const {
     result, id, handleAddPoint, handleResetRound, classes,
   } = props;
   return (
     <Round>
-      <Grid container spacing={16}>
-        {result.map((score, playerId) => (
-          <Grid
-            item
-            container
-            key={playerId}
-            // className={classes.result}
-            xs={6}
-            alignItems="center"
-            direction="column"
-          >
-            <Badge color="primary" badgeContent={2}>
-              <Button
-                variant="contained"
-                onClick={() => handleAddPoint(id, playerId)}
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                  return handleResetRound(id, playerId);
-                }}
-              >
-                {score}
-              </Button>
-            </Badge>
-          </Grid>
-        ))}
-      </Grid>
-      <Stepper nonLinear activeStep={activeStep} alternativeLabel>
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepButton onClick={handleStep(index)} completed={completed[index]}>
-              {label}
-            </StepButton>
-          </Step>
-        ))}
-      </Stepper>
+      <CardContent>
+        <Grid container spacing={16}>
+          {result.map((score, playerId) => (
+            <Grid
+              item
+              container
+              key={playerId}
+              // className={classes.result}
+              xs={6}
+              alignItems="center"
+              direction="column"
+            >
+              <Badge color="primary" badgeContent={2}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleAddPoint(id, playerId)}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    return handleResetRound(id, playerId);
+                  }}
+                >
+                  {score}
+                </Button>
+              </Badge>
+            </Grid>
+          ))}
+        </Grid>
+      </CardContent>
+      <CardActions className={classes.actions} disableActionSpacing>
+        <IconButton
+          className={classnames(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="Show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Stepper nonLinear activeStep={activeStep} alternativeLabel>
+          {steps.map((label, index) => (
+            <Step key={label}>
+              <StepButton onClick={handleStep(index)} completed={completed[index]}>
+                {label}
+              </StepButton>
+            </Step>
+          ))}
+        </Stepper>
+      </Collapse>
     </Round>
   );
 }
