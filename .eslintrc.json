@@ -4,7 +4,8 @@
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "newline-per-chained-call": "off"
+    "newline-per-chained-call": 0,
+    "react/prop-types": 1
   },
   "env": {
     "browser": true,

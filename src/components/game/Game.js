@@ -21,25 +21,21 @@ const styles = theme => ({
 });
 
 class Game extends React.Component {
-  defaultState = {
-    rounds: [],
-    players: [
-      {
-        id: 0,
-        name: 'Jess',
-      },
-      {
-        id: 1,
-        name: 'Seb',
-      },
-    ],
-    open: false,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
-      ...this.defaultState,
+      rounds: [],
+      players: [
+        {
+          id: 0,
+          name: 'Jess',
+        },
+        {
+          id: 1,
+          name: 'Seb',
+        },
+      ],
+      open: false,
     };
   }
 
@@ -105,7 +101,9 @@ class Game extends React.Component {
 
   render() {
     const { rounds, players, open } = this.state;
-    const { classes, gameType, allowAddPlayer } = this.props;
+    const {
+      classes, gameType, allowAddPlayer, children, createRound,
+    } = this.props;
     return (
       <div>
         <GameBar gameType={gameType} toggleDrawer={this.toggleDrawer} />
@@ -118,18 +116,8 @@ class Game extends React.Component {
             handleAddPlayer={this.addPlayer}
             allowAddPlayer={allowAddPlayer}
           />
-          <RoundList>
-            {rounds.map(round => (
-              <ScopaRound
-                key={round.id}
-                id={round.id}
-                result={round.result}
-                handleAddPoint={this.addPoint}
-                handleResetRound={this.resetRound}
-              />
-            ))}
-          </RoundList>
-          <Fab onClick={this.createRound} color="secondary" className={classes.fab}>
+          <RoundList>{children}</RoundList>
+          <Fab onClick={createRound} color="secondary" className={classes.fab}>
             <AddIcon />
           </Fab>
         </Grid>
