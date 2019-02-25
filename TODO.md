@@ -21,7 +21,10 @@
 
   - [x] Add X players for wist
   - [x] Add react router
-  - [ ] Implement UI
+  - [x] Implement UI
+  - [x] Rename Increase/Decrease
+  - [ ] Lift state up
+  - [ ] Remove completed
 
 - [ ] Fix context issue on iPhone
 

@@ -97,7 +97,7 @@ function WistRound(props) {
   }
 
   const {
-    result, id, handleAddPoint, handleResetRound, classes,
+    result, id, handleIncreaseFold, handleDecreaseFold, classes,
   } = props;
   return (
     <Round>
@@ -116,10 +116,10 @@ function WistRound(props) {
               <Badge color="primary" badgeContent={2}>
                 <Button
                   variant="contained"
-                  onClick={() => handleAddPoint(id, playerId)}
+                  onClick={() => handleIncreaseFold(id, playerId)}
                   onContextMenu={(e) => {
                     e.preventDefault();
-                    return handleResetRound(id, playerId);
+                    return handleDecreaseFold(id, playerId);
                   }}
                 >
                   {score}

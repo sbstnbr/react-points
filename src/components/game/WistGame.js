@@ -11,6 +11,8 @@ export default function WistGame() {
     };
     return setRounds(rounds.concat([newRound]));
   };
+  const increaseFold = () => null;
+  const decreaseFold = () => null;
   return (
     <Game gameType="Wist" createRound={createRound} allowAddPlayer>
       {rounds.map(round => (
@@ -18,8 +20,8 @@ export default function WistGame() {
           key={round.id}
           id={round.id}
           result={round.result}
-          // handleAddPoint={addPoint}
-          // handleResetRound={resetRound}
+          handleIncreaseFold={increaseFold}
+          handleDecreaseFold={decreaseFold}
         />
       ))}
     </Game>
