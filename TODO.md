@@ -25,7 +25,8 @@
   - [x] Rename Increase/Decrease
   - [x] Lift step up
   - [x] Create WistRoundResult
-  - [ ] Implement IncreaseFold
+  - [x] Implement IncreaseFold
+  - [x] Implement DecreaseFold
   - [ ] Remove completed
 
 - [ ] Fix context issue on iPhone

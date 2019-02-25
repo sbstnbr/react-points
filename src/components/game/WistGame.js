@@ -8,13 +8,21 @@ export default function WistGame() {
   const createRound = () => {
     const newRound = {
       id: rounds.length,
-      results: [{ playerId: 0 }, { playerId: 1 }], // TODO: Refactor with nbPlayers,
+      results: [{ playerId: 0, bets: 0 }, { playerId: 1, bets: 0 }], // TODO: Refactor with nbPlayers,
       activeStep: 0,
     };
     return setRounds(rounds.concat([newRound]));
   };
-  const increaseFold = () => null;
-  const decreaseFold = () => null;
+  const increaseFold = (roundId, playerId) => () => {
+    const newRounds = rounds.slice();
+    newRounds[roundId].results[playerId].bets += 1;
+    setRounds(newRounds);
+  };
+  const decreaseFold = (roundId, playerId) => () => {
+    const newRounds = rounds.slice();
+    newRounds[roundId].results[playerId].bets -= 1;
+    setRounds(newRounds);
+  };
   const switchActiveStep = roundId => step => () => {
     const newRounds = rounds.map((round) => {
       if (round.id === roundId) {
@@ -38,10 +46,10 @@ export default function WistGame() {
           {round.results.map(result => (
             <WistRoundResult
               key={result.playerId}
-              score={0}
+              folds={result.bets}
               playerId={result.playerId}
-              handleIncreaseFold={increaseFold}
-              handleDecreaseFold={decreaseFold}
+              handleIncreaseFold={increaseFold(round.id, result.playerId)}
+              handleDecreaseFold={decreaseFold(round.id, result.playerId)}
             />
           ))}
         </WistRound>
