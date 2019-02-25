@@ -24,7 +24,7 @@
   - [x] Implement UI
   - [x] Rename Increase/Decrease
   - [x] Lift step up
-  - [ ] Create WistRoundResult
+  - [x] Create WistRoundResult
   - [ ] Implement IncreaseFold
   - [ ] Remove completed
 

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -13,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import classnames from 'classnames';
 import Round from './Round';
+import WistRoundResult from './WistRoundResult';
 
 const styles = theme => ({
   badge: {
@@ -97,42 +96,13 @@ function WistRound(props) {
   }
 
   const {
-    result,
-    id,
-    handleIncreaseFold,
-    handleDecreaseFold,
-    classes,
-    activeStep,
-    handleSwitchActiveStep,
+    classes, activeStep, handleSwitchActiveStep, children,
   } = props;
   return (
     <Round>
       <CardContent>
         <Grid container spacing={16}>
-          {result.map((score, playerId) => (
-            <Grid
-              item
-              container
-              key={playerId}
-              // className={classes.result}
-              xs={6}
-              alignItems="center"
-              direction="column"
-            >
-              <Badge color="primary" badgeContent={2}>
-                <Button
-                  variant="contained"
-                  onClick={() => handleIncreaseFold(id, playerId)}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    return handleDecreaseFold(id, playerId);
-                  }}
-                >
-                  {score}
-                </Button>
-              </Badge>
-            </Grid>
-          ))}
+          {children}
         </Grid>
       </CardContent>
       <CardActions className={classes.actions} disableActionSpacing>

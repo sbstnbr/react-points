@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Game from './Game';
 import WistRound from '../round/WistRound';
+import WistRoundResult from '../round/WistRoundResult';
 
 export default function WistGame() {
   const [rounds, setRounds] = useState([]);
   const createRound = () => {
     const newRound = {
       id: rounds.length,
-      result: new Array(2).fill(0), // TODO: Refactor with nbPlayers,
+      results: [{ playerId: 0 }, { playerId: 1 }], // TODO: Refactor with nbPlayers,
       activeStep: 0,
     };
     return setRounds(rounds.concat([newRound]));
@@ -29,12 +30,21 @@ export default function WistGame() {
         <WistRound
           key={round.id}
           id={round.id}
-          result={round.result}
           activeStep={round.activeStep}
           handleSwitchActiveStep={switchActiveStep(round.id)}
           handleIncreaseFold={increaseFold}
           handleDecreaseFold={decreaseFold}
-        />
+        >
+          {round.results.map(result => (
+            <WistRoundResult
+              key={result.playerId}
+              score={0}
+              playerId={result.playerId}
+              handleIncreaseFold={increaseFold}
+              handleDecreaseFold={decreaseFold}
+            />
+          ))}
+        </WistRound>
       ))}
     </Game>
   );
