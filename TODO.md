@@ -27,6 +27,9 @@
   - [x] Create WistRoundResult
   - [x] Implement IncreaseFold
   - [x] Implement DecreaseFold
+  - [x] Adapt depending on step
+  - [ ] Calculate point depending on bets and done
+  - [ ] Initiate done to bets
   - [ ] Remove completed
 
 - [ ] Fix context issue on iPhone

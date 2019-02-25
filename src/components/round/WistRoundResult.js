@@ -17,7 +17,7 @@ export default function WistRoundResult(props) {
       alignItems="center"
       direction="column"
     >
-      <Badge color="primary" badgeContent={folds}>
+      <Badge color="primary" badgeContent={folds} showZero>
         <Button
           variant="contained"
           onClick={() => handleIncreaseFold(playerId)}

@@ -8,21 +8,34 @@ export default function WistGame() {
   const createRound = () => {
     const newRound = {
       id: rounds.length,
-      results: [{ playerId: 0, bets: 0 }, { playerId: 1, bets: 0 }], // TODO: Refactor with nbPlayers,
+      results: [{ playerId: 0, bets: 0, dones: 0 }, { playerId: 1, bets: 0, dones: 0 }], // TODO: Refactor with nbPlayers,
       activeStep: 0,
     };
     return setRounds(rounds.concat([newRound]));
   };
-  const increaseFold = (roundId, playerId) => () => {
+  function increaseBets(roundId, playerId) {
     const newRounds = rounds.slice();
     newRounds[roundId].results[playerId].bets += 1;
     setRounds(newRounds);
-  };
-  const decreaseFold = (roundId, playerId) => () => {
+  }
+  function increaseDones(roundId, playerId) {
+    const newRounds = rounds.slice();
+    newRounds[roundId].results[playerId].dones += 1;
+    setRounds(newRounds);
+  }
+  function decreaseBets(roundId, playerId) {
     const newRounds = rounds.slice();
     newRounds[roundId].results[playerId].bets -= 1;
     setRounds(newRounds);
-  };
+  }
+  function decreaseDones(roundId, playerId) {
+    const newRounds = rounds.slice();
+    newRounds[roundId].results[playerId].dones -= 1;
+    setRounds(newRounds);
+  }
+  const increaseFold = (roundId, playerId, activeStep) => () => (activeStep === 0 ? increaseBets(roundId, playerId) : increaseDones(roundId, playerId));
+  const decreaseFold = (roundId, playerId, activeStep) => () => (activeStep === 0 ? decreaseBets(roundId, playerId) : decreaseDones(roundId, playerId));
+
   const switchActiveStep = roundId => step => () => {
     const newRounds = rounds.map((round) => {
       if (round.id === roundId) {
@@ -46,10 +59,10 @@ export default function WistGame() {
           {round.results.map(result => (
             <WistRoundResult
               key={result.playerId}
-              folds={result.bets}
+              folds={round.activeStep === 0 ? result.bets : result.dones}
               playerId={result.playerId}
-              handleIncreaseFold={increaseFold(round.id, result.playerId)}
-              handleDecreaseFold={decreaseFold(round.id, result.playerId)}
+              handleIncreaseFold={increaseFold(round.id, result.playerId, round.activeStep)}
+              handleDecreaseFold={decreaseFold(round.id, result.playerId, round.activeStep)}
             />
           ))}
         </WistRound>
