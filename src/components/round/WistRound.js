@@ -37,7 +37,7 @@ function getSteps() {
 
 function WistRound(props) {
   // const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(0);
+  // const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState({});
   const [expanded, setExpanded] = React.useState(false);
 
@@ -76,9 +76,9 @@ function WistRound(props) {
   //   setActiveStep(prevActiveStep => prevActiveStep + 1);
   // }
 
-  const handleStep = step => () => {
-    setActiveStep(step);
-  };
+  // const handleStep = step => () => {
+  //   setActiveStep(step);
+  // };
 
   // function handleComplete() {
   //   const newCompleted = completed;
@@ -97,7 +97,13 @@ function WistRound(props) {
   }
 
   const {
-    result, id, handleIncreaseFold, handleDecreaseFold, classes,
+    result,
+    id,
+    handleIncreaseFold,
+    handleDecreaseFold,
+    classes,
+    activeStep,
+    handleSwitchActiveStep,
   } = props;
   return (
     <Round>
@@ -145,7 +151,7 @@ function WistRound(props) {
         <Stepper nonLinear activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => (
             <Step key={label}>
-              <StepButton onClick={handleStep(index)} completed={completed[index]}>
+              <StepButton onClick={handleSwitchActiveStep(index)} completed={completed[index]}>
                 {label}
               </StepButton>
             </Step>

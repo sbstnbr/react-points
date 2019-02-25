@@ -23,7 +23,9 @@
   - [x] Add react router
   - [x] Implement UI
   - [x] Rename Increase/Decrease
-  - [ ] Lift state up
+  - [x] Lift step up
+  - [ ] Create WistRoundResult
+  - [ ] Implement IncreaseFold
   - [ ] Remove completed
 
 - [ ] Fix context issue on iPhone
