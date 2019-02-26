@@ -76,11 +76,13 @@ export default function WistGame() {
 
   const calculateTotalPoints = (roundList, playerId) => roundList.map(round => calculatePoints(round.id, playerId)).reduce((a, b) => a + b, 0);
 
+  const allowAddPlayer = rounds.length === 0;
+
   return (
     <Game
       gameType="Wist"
       createRound={createRound}
-      allowAddPlayer
+      allowAddPlayer={allowAddPlayer}
       calculateTotalPoints={calculateTotalPoints}
       rounds={rounds}
       increaseNbPlayers={increaseNbPlayers}
