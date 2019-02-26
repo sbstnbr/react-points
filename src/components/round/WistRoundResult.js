@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Badge from '@material-ui/core/Badge';
 
 export default function WistRoundResult(props) {
+  const getBadgeColor = points => (points < 0 ? 'secondary' : 'primary');
   const {
     playerId, handleIncreaseFold, handleDecreaseFold, folds, points,
   } = props;
@@ -17,7 +18,7 @@ export default function WistRoundResult(props) {
       alignItems="center"
       direction="column"
     >
-      <Badge color="primary" badgeContent={folds} showZero>
+      <Badge color={getBadgeColor(points)} badgeContent={folds} showZero>
         <Button
           variant="contained"
           onClick={() => handleIncreaseFold(playerId)}

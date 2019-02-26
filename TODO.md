@@ -33,8 +33,10 @@
   - [x] Initiate done to null
   - [x] Update total / refactor function name
   - [x] Remove completed
+  - [x] Update badge color if bets != done
   - [ ] Handle multiple players
-  - [ ] Update badge color if bets != done
+  - [ ] Add nbCards per round
+  - [ ] Limit bets/done to nbOfCards per round
 
 - [ ] Setup proper tests
 - [ ] Fix context issue on iPhone
