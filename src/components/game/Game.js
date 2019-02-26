@@ -43,9 +43,13 @@ class Game extends React.Component {
     });
   };
 
-  addPlayer = (name = 'Bro') => this.setState(state => ({
-    players: [...state.players, { id: state.players.length, name }],
-  }));
+  addPlayer = (name = 'Bro') => {
+    const { increaseNbPlayers } = this.props;
+    increaseNbPlayers();
+    return this.setState(state => ({
+      players: [...state.players, { id: state.players.length, name }],
+    }));
+  };
 
   updatePlayerName = (id, newName) => this.setState((state) => {
     const players = state.players.map((player) => {

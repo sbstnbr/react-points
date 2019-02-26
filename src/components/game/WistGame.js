@@ -5,14 +5,22 @@ import WistRoundResult from '../round/WistRoundResult';
 
 export default function WistGame() {
   const [rounds, setRounds] = useState([]);
+  const [nbPlayers, setNbPlayers] = useState(2);
+
   const createRound = () => {
     const newRound = {
       id: rounds.length,
-      results: [{ playerId: 0, bets: 0 }, { playerId: 1, bets: 0 }], // TODO: Refactor with nbPlayers,
+      results: [],
       activeStep: 0,
     };
+    for (let index = 0; index < nbPlayers; index += 1) {
+      newRound.results.push({ playerId: index, bets: 0 });
+    }
     return setRounds(rounds.concat([newRound]));
   };
+
+  const increaseNbPlayers = () => setNbPlayers(nbPlayers + 1);
+
   function increaseBets(roundId, playerId) {
     const newRounds = rounds.slice();
     newRounds[roundId].results[playerId].bets += 1;
@@ -66,7 +74,7 @@ export default function WistGame() {
     return null;
   };
 
-  const calculateTotalPoints = (rounds, playerId) => rounds.map(round => calculatePoints(round.id, playerId)).reduce((a, b) => a + b, 0);
+  const calculateTotalPoints = (roundList, playerId) => roundList.map(round => calculatePoints(round.id, playerId)).reduce((a, b) => a + b, 0);
 
   return (
     <Game
@@ -75,6 +83,7 @@ export default function WistGame() {
       allowAddPlayer
       calculateTotalPoints={calculateTotalPoints}
       rounds={rounds}
+      increaseNbPlayers={increaseNbPlayers}
     >
       {rounds.map(round => (
         <WistRound
