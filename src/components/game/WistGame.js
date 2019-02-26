@@ -8,7 +8,7 @@ export default function WistGame() {
   const createRound = () => {
     const newRound = {
       id: rounds.length,
-      results: [{ playerId: 0, bets: 0, dones: 0 }, { playerId: 1, bets: 0, dones: 0 }], // TODO: Refactor with nbPlayers,
+      results: [{ playerId: 0, bets: 0 }, { playerId: 1, bets: 0 }], // TODO: Refactor with nbPlayers,
       activeStep: 0,
     };
     return setRounds(rounds.concat([newRound]));
@@ -39,7 +39,16 @@ export default function WistGame() {
   const switchActiveStep = roundId => step => () => {
     const newRounds = rounds.map((round) => {
       if (round.id === roundId) {
-        return { ...round, activeStep: step };
+        const updatedRound = { ...round };
+        updatedRound.results = round.results.map((result) => {
+          if (!result.dones) {
+            const updatedResult = { ...result };
+            updatedResult.dones = result.bets;
+            return updatedResult;
+          }
+          return result;
+        });
+        return { ...updatedRound, activeStep: step };
       }
       return round;
     });
@@ -50,10 +59,13 @@ export default function WistGame() {
 
   const calculatePoints = (roundId, playerId) => {
     const result = rounds[roundId].results[playerId];
-    if (result.bets === result.dones) {
-      return 10 + 10 * result.bets;
+    if (typeof result.bets !== 'undefined' && typeof result.dones !== 'undefined') {
+      if (result.bets === result.dones) {
+        return 10 + 10 * result.bets;
+      }
+      return Math.abs(result.bets - result.dones) * 10 * -1;
     }
-    return Math.abs(result.bets - result.dones) * 10 * -1;
+    return '-';
   };
 
   return (

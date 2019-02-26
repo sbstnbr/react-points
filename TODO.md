@@ -29,11 +29,14 @@
   - [x] Implement DecreaseFold
   - [x] Adapt depending on step
   - [x] Calculate point depending on bets and done: 10 if done / +10 per done / -10 per diff
-  - [ ] Initiate bets and dones to null
+  - [x] Initiate done to bets when switching tab for the first time
+  - [x] Initiate done to null
   - [ ] Update total / refactor function name
-  - [ ] Initiate done to bets
   - [ ] Remove completed
+  - [ ] Handle multiple players
+  - [ ] Update badge color if bets != done
 
+- [ ] Setup proper tests
 - [ ] Fix context issue on iPhone
 
 - [ ] Add icon
