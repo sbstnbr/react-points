@@ -10,7 +10,6 @@ import RoundList from '../round/RoundList';
 import ScoreList from '../score/ScoreList';
 import GameBar from './GameBar';
 import GameDrawer from './GameDrawer';
-import ScopaRound from '../round/ScopaRound';
 
 const styles = theme => ({
   fab: {
@@ -24,7 +23,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rounds: [],
       players: [
         {
           id: 0,
@@ -102,7 +100,13 @@ class Game extends React.Component {
   render() {
     const { players, open } = this.state;
     const {
-      classes, gameType, allowAddPlayer, children, createRound, rounds,
+      classes,
+      gameType,
+      allowAddPlayer,
+      children,
+      createRound,
+      rounds,
+      calculatePoints,
     } = this.props;
     return (
       <div>
@@ -115,6 +119,7 @@ class Game extends React.Component {
             handleUpdatePlayerName={this.updatePlayerName}
             handleAddPlayer={this.addPlayer}
             allowAddPlayer={allowAddPlayer}
+            calculatePoints={calculatePoints}
           />
           <RoundList>{children}</RoundList>
           <Fab onClick={createRound} color="secondary" className={classes.fab}>

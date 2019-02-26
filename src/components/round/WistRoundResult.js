@@ -5,7 +5,7 @@ import Badge from '@material-ui/core/Badge';
 
 export default function WistRoundResult(props) {
   const {
-    playerId, handleIncreaseFold, handleDecreaseFold, folds,
+    playerId, handleIncreaseFold, handleDecreaseFold, folds, points,
   } = props;
   return (
     <Grid
@@ -26,7 +26,7 @@ export default function WistRoundResult(props) {
             return handleDecreaseFold(playerId);
           }}
         >
-          -
+          {points}
         </Button>
       </Badge>
     </Grid>

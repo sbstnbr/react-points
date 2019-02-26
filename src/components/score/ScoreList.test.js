@@ -15,11 +15,11 @@ const score = (
   />
 );
 
-it('renders without crashing', () => {
+xit('renders without crashing', () => {
   shallow(score);
 });
 
-it('calculates a player score by summing rounds', () => {
+xit('calculates a player score by summing rounds', () => {
   const wrapper = shallow(score);
   expect(wrapper.instance().calculatePoints(rounds, 0)).toEqual(8);
 });

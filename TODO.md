@@ -28,7 +28,9 @@
   - [x] Implement IncreaseFold
   - [x] Implement DecreaseFold
   - [x] Adapt depending on step
-  - [ ] Calculate point depending on bets and done
+  - [x] Calculate point depending on bets and done: 10 if done / +10 per done / -10 per diff
+  - [ ] Initiate bets and dones to null
+  - [ ] Update total / refactor function name
   - [ ] Initiate done to bets
   - [ ] Remove completed
 

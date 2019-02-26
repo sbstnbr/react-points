@@ -34,8 +34,15 @@ export default function ScopaGame() {
     return setRounds(newRounds);
   };
 
+  const calculatePoints = (rounds, i) => rounds.map(round => round.result[i]).reduce((acc, val) => acc + val, 0);
+
   return (
-    <Game gameType="Scopa" createRound={createRound} rounds={rounds}>
+    <Game
+      gameType="Scopa"
+      createRound={createRound}
+      rounds={rounds}
+      calculatePoints={calculatePoints}
+    >
       {rounds.map(round => (
         <ScopaRound
           key={round.id}

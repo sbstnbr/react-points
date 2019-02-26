@@ -45,8 +45,25 @@ export default function WistGame() {
     });
     setRounds(newRounds);
   };
+
+  const calculateTotalPoints = () => 0;
+
+  const calculatePoints = (roundId, playerId) => {
+    const result = rounds[roundId].results[playerId];
+    if (result.bets === result.dones) {
+      return 10 + 10 * result.bets;
+    }
+    return Math.abs(result.bets - result.dones) * 10 * -1;
+  };
+
   return (
-    <Game gameType="Wist" createRound={createRound} allowAddPlayer>
+    <Game
+      gameType="Wist"
+      createRound={createRound}
+      allowAddPlayer
+      calculatePoints={calculateTotalPoints}
+      rounds={rounds}
+    >
       {rounds.map(round => (
         <WistRound
           key={round.id}
@@ -61,6 +78,7 @@ export default function WistGame() {
               key={result.playerId}
               folds={round.activeStep === 0 ? result.bets : result.dones}
               playerId={result.playerId}
+              points={calculatePoints(round.id, result.playerId)}
               handleIncreaseFold={increaseFold(round.id, result.playerId, round.activeStep)}
               handleDecreaseFold={decreaseFold(round.id, result.playerId, round.activeStep)}
             />
