@@ -31,8 +31,8 @@
   - [x] Calculate point depending on bets and done: 10 if done / +10 per done / -10 per diff
   - [x] Initiate done to bets when switching tab for the first time
   - [x] Initiate done to null
-  - [ ] Update total / refactor function name
-  - [ ] Remove completed
+  - [x] Update total / refactor function name
+  - [x] Remove completed
   - [ ] Handle multiple players
   - [ ] Update badge color if bets != done
 
