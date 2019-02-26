@@ -55,8 +55,6 @@ export default function WistGame() {
     setRounds(newRounds);
   };
 
-  const calculateTotalPoints = () => 0;
-
   const calculatePoints = (roundId, playerId) => {
     const result = rounds[roundId].results[playerId];
     if (typeof result.bets !== 'undefined' && typeof result.dones !== 'undefined') {
@@ -65,8 +63,10 @@ export default function WistGame() {
       }
       return Math.abs(result.bets - result.dones) * 10 * -1;
     }
-    return '-';
+    return null;
   };
+
+  const calculateTotalPoints = (rounds, playerId) => rounds.map(round => calculatePoints(round.id, playerId)).reduce((a, b) => a + b, 0);
 
   return (
     <Game

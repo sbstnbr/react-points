@@ -26,7 +26,7 @@ export default function WistRoundResult(props) {
             return handleDecreaseFold(playerId);
           }}
         >
-          {points}
+          {points || '-'}
         </Button>
       </Badge>
     </Grid>

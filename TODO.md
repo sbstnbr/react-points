@@ -38,6 +38,7 @@
 
 - [ ] Setup proper tests
 - [ ] Fix context issue on iPhone
+- [ ] Use objects with setters in state
 
 - [ ] Add icon
 - [ ] Add color for round winner
