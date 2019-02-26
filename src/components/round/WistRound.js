@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core';
 import Stepper from '@material-ui/core/Stepper';
@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import classnames from 'classnames';
 import Round from './Round';
-import WistRoundResult from './WistRoundResult';
 
 const styles = theme => ({
   badge: {
