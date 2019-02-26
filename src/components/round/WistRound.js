@@ -13,10 +13,6 @@ import classnames from 'classnames';
 import Round from './Round';
 
 const styles = theme => ({
-  badge: {
-    top: 'unset',
-    bottom: '-50%',
-  },
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',

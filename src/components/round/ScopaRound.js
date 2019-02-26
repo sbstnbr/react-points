@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Badge from '@material-ui/core/Badge';
 import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -17,7 +18,7 @@ const styles = {
 
 function ScopaRound(props) {
   const {
-    classes, result, id, handleAddPoint, handleResetRound,
+    classes, result, id, handleAddPoint, handleResetRound, playerIdToServe,
   } = props;
   return (
     <Round>
@@ -33,16 +34,18 @@ function ScopaRound(props) {
               alignItems="center"
               direction="column"
             >
-              <Button
-                variant="contained"
-                onClick={() => handleAddPoint(id, playerId)}
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                  return handleResetRound(id, playerId);
-                }}
-              >
-                {score}
-              </Button>
+              <Badge variant="dot" invisible={playerId !== playerIdToServe} color="primary">
+                <Button
+                  variant="contained"
+                  onClick={() => handleAddPoint(id, playerId)}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    return handleResetRound(id, playerId);
+                  }}
+                >
+                  {score}
+                </Button>
+              </Badge>
             </Grid>
           ))}
         </Grid>
