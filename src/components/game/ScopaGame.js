@@ -35,7 +35,7 @@ export default function ScopaGame() {
   };
 
   return (
-    <Game gameType="Scopa" createRound={createRound}>
+    <Game gameType="Scopa" createRound={createRound} rounds={rounds}>
       {rounds.map(round => (
         <ScopaRound
           key={round.id}

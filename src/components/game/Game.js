@@ -100,9 +100,9 @@ class Game extends React.Component {
   });
 
   render() {
-    const { rounds, players, open } = this.state;
+    const { players, open } = this.state;
     const {
-      classes, gameType, allowAddPlayer, children, createRound,
+      classes, gameType, allowAddPlayer, children, createRound, rounds,
     } = this.props;
     return (
       <div>
