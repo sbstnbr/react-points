@@ -122,7 +122,7 @@ class Game extends React.Component {
             players={players}
             handleUpdatePlayerName={this.updatePlayerName}
             handleAddPlayer={this.addPlayer}
-            allowAddPlayer={allowAddPlayer}
+            allowAddPlayer={allowAddPlayer && rounds.length === 0}
             calculateTotalPoints={calculateTotalPoints}
           />
           <RoundList>{children}</RoundList>
