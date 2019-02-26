@@ -21,5 +21,5 @@ xit('renders without crashing', () => {
 
 xit('calculates a player score by summing rounds', () => {
   const wrapper = shallow(score);
-  expect(wrapper.instance().calculatePoints(rounds, 0)).toEqual(8);
+  expect(wrapper.instance().calculateTotalPoints(rounds, 0)).toEqual(8);
 });

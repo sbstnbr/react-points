@@ -106,7 +106,7 @@ class Game extends React.Component {
       children,
       createRound,
       rounds,
-      calculatePoints,
+      calculateTotalPoints,
     } = this.props;
     return (
       <div>
@@ -119,7 +119,7 @@ class Game extends React.Component {
             handleUpdatePlayerName={this.updatePlayerName}
             handleAddPlayer={this.addPlayer}
             allowAddPlayer={allowAddPlayer}
-            calculatePoints={calculatePoints}
+            calculateTotalPoints={calculateTotalPoints}
           />
           <RoundList>{children}</RoundList>
           <Fab onClick={createRound} color="secondary" className={classes.fab}>

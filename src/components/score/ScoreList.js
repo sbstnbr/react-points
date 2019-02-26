@@ -12,12 +12,12 @@ function ScoreList(props) {
     handleUpdatePlayerName,
     allowAddPlayer,
     handleAddPlayer,
-    calculatePoints,
+    calculateTotalPoints,
   } = props;
   const Players = players.map((player, id) => (
     <Score
       player={player}
-      points={calculatePoints(rounds, id)}
+      points={calculateTotalPoints(rounds, id)}
       handleUpdatePlayerName={handleUpdatePlayerName}
       key={player.id}
     />

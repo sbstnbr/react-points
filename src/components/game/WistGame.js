@@ -73,7 +73,7 @@ export default function WistGame() {
       gameType="Wist"
       createRound={createRound}
       allowAddPlayer
-      calculatePoints={calculateTotalPoints}
+      calculateTotalPoints={calculateTotalPoints}
       rounds={rounds}
     >
       {rounds.map(round => (
