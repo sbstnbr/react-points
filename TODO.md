@@ -35,15 +35,16 @@
   - [x] Remove completed
   - [x] Update badge color if bets != done
   - [x] Handle multiple players
-  - [ ] Fix css for multiple players
+  - [x] Fix css for multiple players
   - [ ] Add nbCards per round
   - [ ] Limit bets/done to nbOfCards per round
 
 - [x] Who's turn is it ?
+- [x] Add game icons
 
 - [ ] Setup proper tests
 - [ ] Fix context issue on iPhone
 - [ ] Use objects with setters in state
 
-- [ ] Add game icons
+- [ ] Give a color to each player
 - [ ] CI with Github
