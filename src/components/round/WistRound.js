@@ -45,7 +45,7 @@ function WistRound(props) {
   return (
     <Round>
       <CardContent>
-        <Grid container spacing={16}>
+        <Grid container spacing={16} justify="space-evenly">
           {children}
         </Grid>
       </CardContent>

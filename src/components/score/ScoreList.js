@@ -28,7 +28,7 @@ function ScoreList(props) {
     </IconButton>
   ) : null;
   return (
-    <Grid item xs={12} container wrap="nowrap">
+    <Grid item xs={12} container justify="space-evenly">
       {Players}
       {addPlayerButton}
     </Grid>

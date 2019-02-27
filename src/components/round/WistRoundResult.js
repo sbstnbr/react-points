@@ -14,7 +14,7 @@ export default function WistRoundResult(props) {
       container
       key={playerId}
       // className={classes.result}
-      xs={6}
+      xs={3}
       alignItems="center"
       direction="column"
     >
