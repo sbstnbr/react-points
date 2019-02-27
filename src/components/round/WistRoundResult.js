@@ -15,6 +15,8 @@ export default function WistRoundResult(props) {
       key={playerId}
       // className={classes.result}
       xs={3}
+      sm={2}
+      md={1}
       alignItems="center"
       direction="column"
     >

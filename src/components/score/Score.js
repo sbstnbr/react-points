@@ -50,7 +50,7 @@ class Score extends React.Component {
     const { classes, player, points } = this.props;
     const { open } = this.state;
     return (
-      <Grid item xs={3}>
+      <Grid item xs={3} sm={2} md={1}>
         <Grid container direction="column" alignItems="center">
           <Avatar className={classes.avatar} onClick={this.handleClickOpen}>
             {player.name.split('')[0]}
