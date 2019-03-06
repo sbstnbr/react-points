@@ -12,8 +12,11 @@ import GameBar from './GameBar';
 import GameDrawer from './GameDrawer';
 
 const styles = theme => ({
+  parent: {
+    padding: '20px',
+  },
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2,
   },
@@ -116,7 +119,7 @@ class Game extends React.Component {
       <div>
         <GameBar gameType={gameType} toggleDrawer={this.toggleDrawer} />
         <GameDrawer toggleDrawer={this.toggleDrawer} open={open} />
-        <Grid container spacing={16} alignItems="center" style={{ padding: '20px' }}>
+        <Grid container spacing={16} alignItems="center" className={classes.parent}>
           <ScoreList
             rounds={rounds}
             players={players}
