@@ -3,12 +3,12 @@ import Game from './Game';
 import ScopaRound from '../round/ScopaRound';
 
 export default function ScopaGame() {
-  const firstPlayerIdToServe = Math.floor(Math.random() + 0.5);
   const [rounds, setRounds] = useState([]);
-  const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
   const [nbPlayers, setNbPlayers] = useState(2);
+  const firstPlayerIdToServe = Math.floor(Math.random() * nbPlayers);
+  const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
 
-  const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(nextPlayerIdToServe === 0 ? 1 : 0);
+  const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(nextPlayerIdToServe === nbPlayers - 1 ? 0 : nextPlayerIdToServe + 1);
 
   const createRound = () => {
     const newRound = {

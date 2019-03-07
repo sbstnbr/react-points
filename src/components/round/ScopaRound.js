@@ -7,18 +7,11 @@ import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Round from './Round';
 
-const styles = {
-  result: {
-    // justify: 'center',
-  },
-  round: {
-    width: '100%',
-  },
-};
+const styles = {};
 
 function ScopaRound(props) {
   const {
-    classes, result, id, handleAddPoint, handleResetRound, playerIdToServe,
+    result, id, handleAddPoint, handleResetRound, playerIdToServe,
   } = props;
   return (
     <Round>
@@ -29,7 +22,6 @@ function ScopaRound(props) {
               item
               container
               key={playerId}
-              className={classes.result}
               xs={3}
               sm={2}
               md={1}
@@ -57,7 +49,6 @@ function ScopaRound(props) {
 }
 
 ScopaRound.propTypes = {
-  classes: PropTypes.shape({ result: PropTypes.string.isRequired }).isRequired,
   result: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,
   handleAddPoint: PropTypes.func.isRequired,
