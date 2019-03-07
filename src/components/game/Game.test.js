@@ -24,24 +24,6 @@ beforeEach(() => {
 //   expect(wrapper.state().rounds.length).toEqual(1);
 // });
 
-it('should add a new player', () => {
-  const expected = {
-    id: 2,
-    name: 'Bro',
-  };
-  wrapper.instance().addPlayer('Bro');
-  expect(wrapper.state().players[2]).toEqual(expected);
-});
-
-it('should update a player name', () => {
-  const expected = {
-    id: 0,
-    name: 'Tata',
-  };
-  wrapper.instance().updatePlayerName(0, 'Tata');
-  expect(wrapper.state().players[0]).toEqual(expected);
-});
-
 // it('should add a point to a player in a round', () => {
 //   const expected = {
 //     id: 0,
@@ -63,3 +45,26 @@ it('should update a player name', () => {
 //   wrapper.instance().resetRound(0, 0);
 //   expect(wrapper.state().rounds[0]).toEqual(expected);
 // });
+
+it('should add a new player', () => {
+  const expected = {
+    id: 2,
+    name: 'Bro',
+  };
+  wrapper.instance().addPlayer('Bro');
+  expect(wrapper.state().players[2]).toEqual(expected);
+});
+
+it('should update a player name', () => {
+  const expected = {
+    id: 0,
+    name: 'Tata',
+  };
+  wrapper.instance().updatePlayerName(0, 'Tata');
+  expect(wrapper.state().players[0]).toEqual(expected);
+});
+
+it('should update open in state', () => {
+  wrapper.instance().toggleDrawer(true);
+  expect(wrapper.state().open.toBeTruthy);
+});
