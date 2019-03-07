@@ -64,46 +64,6 @@ class Game extends React.Component {
     return { players };
   });
 
-  addPoint = (roundId, playerId) => this.setState((state) => {
-    const rounds = state.rounds.slice();
-    rounds[roundId].result[playerId] += 1;
-    return rounds;
-  });
-
-  createRound = () => this.setState((state) => {
-    const newRound = {
-      id: state.rounds.length,
-      result: new Array(state.players.length).fill(0),
-    };
-    const rounds = [...state.rounds, newRound];
-    return { rounds };
-  });
-
-  createWistRound = () => this.setState((state) => {
-    const newRound = {
-      id: state.rounds.length,
-      result: new Array(state.players.length).fill(0),
-    };
-    const rounds = [...state.rounds, newRound];
-    return { rounds };
-  });
-
-  resetRound = (roundId, playerId) => this.setState((state) => {
-    const rounds = state.rounds.map((round) => {
-      if (round.id === roundId) {
-        const newResult = round.result.map((result, id) => {
-          if (id === playerId) {
-            return 0;
-          }
-          return result;
-        });
-        return { ...round, result: newResult };
-      }
-      return round;
-    });
-    return { rounds };
-  });
-
   render() {
     const { players, open } = this.state;
     const {
