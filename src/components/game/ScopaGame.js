@@ -6,6 +6,7 @@ export default function ScopaGame() {
   const firstPlayerIdToServe = Math.floor(Math.random() + 0.5);
   const [rounds, setRounds] = useState([]);
   const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
+  const [nbPlayers, setNbPlayers] = useState(2);
 
   const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(nextPlayerIdToServe === 0 ? 1 : 0);
 
@@ -13,7 +14,7 @@ export default function ScopaGame() {
     const newRound = {
       id: rounds.length,
       playerIdToServe: nextPlayerIdToServe,
-      result: new Array(2).fill(0), // TODO: Refactor with nbPlayers
+      result: new Array(nbPlayers).fill(0),
     };
     switchNextPlayerIdToServe();
     return setRounds(rounds.concat([newRound]));
@@ -43,12 +44,18 @@ export default function ScopaGame() {
 
   const calculateTotalPoints = (rounds, i) => rounds.map(round => round.result[i]).reduce((acc, val) => acc + val, 0);
 
+  const allowAddPlayer = rounds.length === 0;
+
+  const increaseNbPlayers = () => setNbPlayers(nbPlayers + 1);
+
   return (
     <Game
       gameType="Scopa"
       createRound={createRound}
       rounds={rounds}
       calculateTotalPoints={calculateTotalPoints}
+      allowAddPlayer={allowAddPlayer}
+      increaseNbPlayers={increaseNbPlayers}
     >
       {rounds.map(round => (
         <ScopaRound
