@@ -23,14 +23,16 @@ function ScopaRound(props) {
   return (
     <Round>
       <CardContent>
-        <Grid container spacing={16}>
+        <Grid container spacing={16} justify="space-evenly">
           {result.map((score, playerId) => (
             <Grid
               item
               container
               key={playerId}
               className={classes.result}
-              xs={6}
+              xs={3}
+              sm={2}
+              md={1}
               alignItems="center"
               direction="column"
             >
