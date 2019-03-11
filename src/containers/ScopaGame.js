@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Game from './Game';
-import ScopaRound from '../round/ScopaRound';
+import Game from '../components/game/Game';
+import ScopaRound from '../components/round/ScopaRound';
 
 export default function ScopaGame() {
   const [rounds, setRounds] = useState([]);

@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import ScopaGame from './game/ScopaGame';
-import WistGame from './game/WistGame';
+import ScopaGame from './ScopaGame';
+import WistGame from './WistGame';
 
 export default function App() {
   return (
