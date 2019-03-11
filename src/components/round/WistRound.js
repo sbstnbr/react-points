@@ -25,23 +25,20 @@ const styles = theme => ({
   },
 });
 
-function getSteps() {
-  return ['Bid', 'Result'];
-}
+const getSteps = () => ['Bid', 'Result'];
 
-function WistRound(props) {
+const WistRound = ({
+  classes, activeStep, handleSwitchActiveStep, children,
+}) => {
   // const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const steps = getSteps();
 
-  function handleExpandClick() {
+  const handleExpandClick = () => {
     setExpanded(!expanded);
-  }
+  };
 
-  const {
-    classes, activeStep, handleSwitchActiveStep, children,
-  } = props;
   return (
     <Round>
       <CardContent>
@@ -72,6 +69,6 @@ function WistRound(props) {
       </Collapse>
     </Round>
   );
-}
+};
 
 export default withStyles(styles)(WistRound);

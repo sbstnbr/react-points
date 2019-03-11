@@ -5,15 +5,14 @@ import Add from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
 import Score from './Score';
 
-function ScoreList(props) {
-  const {
-    players,
-    rounds,
-    handleUpdatePlayerName,
-    allowAddPlayer,
-    handleAddPlayer,
-    calculateTotalPoints,
-  } = props;
+function ScoreList({
+  players,
+  rounds,
+  handleUpdatePlayerName,
+  allowAddPlayer,
+  handleAddPlayer,
+  calculateTotalPoints,
+}) {
   const Players = players.map((player, id) => (
     <Score
       player={player}

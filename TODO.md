@@ -16,8 +16,7 @@
 - [x] Add eslint
 - [x] Add player id
 - [x] Move fab out of roundlist
-
-- [ ] Implement wist
+- [x] Implement wist
 
   - [x] Add X players for wist
   - [x] Add react router
@@ -36,15 +35,17 @@
   - [x] Update badge color if bets != done
   - [x] Handle multiple players
   - [x] Fix css for multiple players
-  - [ ] Add nbCards per round
-  - [ ] Limit bets/done to nbOfCards per round
 
 - [x] Who's turn is it ?
 - [x] Add game icons
-
-- [ ] Setup proper tests
+- [x] Refactor structure
+- [x] Refactor the use of props in functions with destructuring
+- [ ] Persist the state
+- [ ] Use reducers with UT
+- [ ] Stick the score at the top
+- [ ] Add nbCards per round
+- [ ] Limit bets/done to nbOfCards per round
 - [ ] Fix context issue on iPhone
 - [ ] Use objects with setters in state
-
 - [ ] Give a color to each player
 - [ ] CI with Github

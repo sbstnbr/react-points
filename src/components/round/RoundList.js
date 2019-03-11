@@ -5,14 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({});
 
-function RoundList(props) {
-  const { children } = props;
-  return (
-    <Grid item container direction="column" alignItems="center" spacing={16}>
-      {children}
-    </Grid>
-  );
-}
+const RoundList = ({ children }) => (
+  <Grid item container direction="column" alignItems="center" spacing={16}>
+    {children}
+  </Grid>
+);
 
 RoundList.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,

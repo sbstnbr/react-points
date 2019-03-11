@@ -9,8 +9,7 @@ import PollIcon from '@material-ui/icons/Poll';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import { Link } from 'react-router-dom';
 
-function GameDrawer(props) {
-  const { open, toggleDrawer } = props;
+const GameDrawer = ({ open, toggleDrawer }) => {
   const gameList = (
     <div>
       <List>
@@ -40,7 +39,7 @@ function GameDrawer(props) {
       </div>
     </SwipeableDrawer>
   );
-}
+};
 
 GameDrawer.propTypes = {
   open: PropTypes.bool.isRequired,

@@ -9,44 +9,41 @@ import Round from './Round';
 
 const styles = {};
 
-function ScopaRound(props) {
-  const {
-    result, id, handleAddPoint, handleResetRound, playerIdToServe,
-  } = props;
-  return (
-    <Round>
-      <CardContent>
-        <Grid container spacing={16} justify="space-evenly">
-          {result.map((score, playerId) => (
-            <Grid
-              item
-              container
-              key={playerId}
-              xs={3}
-              sm={2}
-              md={1}
-              alignItems="center"
-              direction="column"
-            >
-              <Badge variant="dot" invisible={playerId !== playerIdToServe} color="primary">
-                <Button
-                  variant="contained"
-                  onClick={() => handleAddPoint(id, playerId)}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    return handleResetRound(id, playerId);
-                  }}
-                >
-                  {score}
-                </Button>
-              </Badge>
-            </Grid>
-          ))}
-        </Grid>
-      </CardContent>
-    </Round>
-  );
-}
+const ScopaRound = ({
+  result, id, handleAddPoint, handleResetRound, playerIdToServe,
+}) => (
+  <Round>
+    <CardContent>
+      <Grid container spacing={16} justify="space-evenly">
+        {result.map((score, playerId) => (
+          <Grid
+            item
+            container
+            key={playerId}
+            xs={3}
+            sm={2}
+            md={1}
+            alignItems="center"
+            direction="column"
+          >
+            <Badge variant="dot" invisible={playerId !== playerIdToServe} color="primary">
+              <Button
+                variant="contained"
+                onClick={() => handleAddPoint(id, playerId)}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  return handleResetRound(id, playerId);
+                }}
+              >
+                {score}
+              </Button>
+            </Badge>
+          </Grid>
+        ))}
+      </Grid>
+    </CardContent>
+  </Round>
+);
 
 ScopaRound.propTypes = {
   result: PropTypes.arrayOf(PropTypes.number).isRequired,

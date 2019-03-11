@@ -13,14 +13,11 @@ const styles = {
   },
 };
 
-function Round(props) {
-  const { classes, children } = props;
-  return (
-    <Grid item xs={12} className={classes.round}>
-      <Card>{children}</Card>
-    </Grid>
-  );
-}
+const Round = ({ classes, children }) => (
+  <Grid item xs={12} className={classes.round}>
+    <Card>{children}</Card>
+  </Grid>
+);
 
 Round.propTypes = {
   classes: PropTypes.shape({ result: PropTypes.string.isRequired }).isRequired,
