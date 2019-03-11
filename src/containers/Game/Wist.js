@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Game from '../../components/Game/Game';
-import WistRound from '../../components/round/WistRound';
-import WistRoundResult from '../../components/round/WistRoundResult';
+import WistRound from '../../components/Round/WistRound';
+import WistRoundResult from '../../components/Round/WistRoundResult';
 
 export default function WistGame() {
   const [rounds, setRounds] = useState([]);
