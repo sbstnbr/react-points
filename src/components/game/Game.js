@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import RoundList from '../round/RoundList';
-import ScoreList from '../score/ScoreList';
+import RoundList from '../Round/RoundList';
+import ScoreList from '../Score/ScoreList';
 import GameBar from './GameBar';
 import GameDrawer from './GameDrawer';
 

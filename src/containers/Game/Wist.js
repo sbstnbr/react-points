@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Game from '../../components/game/Game';
+import Game from '../../components/Game/Game';
 import WistRound from '../../components/round/WistRound';
 import WistRoundResult from '../../components/round/WistRoundResult';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Game from '../../components/game/Game';
+import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/round/ScopaRound';
 
 export default function ScopaGame() {
