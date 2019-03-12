@@ -1,5 +1,5 @@
 import players from './players';
-import { PLAYER_ADD, PLAYER_UPDATE } from '../constants/actionTypes';
+import * as actions from '../actions';
 
 const initialState = [{ id: 0, name: 'Jess' }, { id: 1, name: 'Seb' }];
 
@@ -9,25 +9,17 @@ describe('player reducers', () => {
   });
 
   it('should handle PLAYER_ADD', () => {
-    expect(
-      players([], {
-        type: PLAYER_ADD,
-      }),
-    ).toEqual([{ id: 0, name: 'Bro' }]);
-    expect(
-      players(initialState, {
-        type: PLAYER_ADD,
-      }),
-    ).toEqual([...initialState, { id: 2, name: 'Bro' }]);
+    expect(players([], actions.playerAdd())).toEqual([{ id: 0, name: 'Bro' }]);
+    expect(players(initialState, actions.playerAdd())).toEqual([
+      ...initialState,
+      { id: 2, name: 'Bro' },
+    ]);
   });
 
   it('should handle PLAYER_UPDATE', () => {
-    expect(
-      players(initialState, {
-        type: PLAYER_UPDATE,
-        id: 1,
-        name: 'Bro',
-      }),
-    ).toEqual([{ id: 0, name: 'Jess' }, { id: 1, name: 'Bro' }]);
+    expect(players(initialState, actions.playerUpdate(1, 'Bro'))).toEqual([
+      { id: 0, name: 'Jess' },
+      { id: 1, name: 'Bro' },
+    ]);
   });
 });
