@@ -40,8 +40,8 @@
 - [x] Add game icons
 - [x] Refactor structure
 - [x] Refactor the use of props in functions with destructuring
-- [ ] Introduce constants
-- [ ] Use reducers with UT
+- [x] Introduce constants
+- [ ] Setup redux
 - [ ] Persist the state
 - [ ] Stick the score at the top
 - [ ] Add nbCards per round

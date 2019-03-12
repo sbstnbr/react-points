@@ -1,8 +1,10 @@
+import { PLAYER_ADD, PLAYER_UPDATE } from '../constants/actionTypes';
+
 const initialState = [{ id: 0, name: 'Jess' }, { id: 1, name: 'Seb' }];
 
 const players = (state = initialState, action) => {
   switch (action.type) {
-    case 'PLAYER::ADD':
+    case PLAYER_ADD:
       return [
         ...state,
         {
@@ -10,7 +12,7 @@ const players = (state = initialState, action) => {
           name: 'Bro',
         },
       ];
-    case 'PLAYER::UPDATE_NAME':
+    case PLAYER_UPDATE:
       return state.map(player => (player.id === action.id ? { ...player, name: action.name } : player));
     default:
       return state;
