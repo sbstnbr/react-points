@@ -1,4 +1,4 @@
-import players from './index';
+import players from './players';
 
 const initialState = [{ id: 0, name: 'Jess' }, { id: 1, name: 'Seb' }];
 
