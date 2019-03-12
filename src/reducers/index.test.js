@@ -7,6 +7,19 @@ describe('player reducers', () => {
     expect(players(undefined, {})).toEqual(initialState);
   });
 
+  it('should handle PLAYER::ADD', () => {
+    expect(
+      players([], {
+        type: 'PLAYER::ADD',
+      }),
+    ).toEqual([{ id: 0, name: 'Bro' }]);
+    expect(
+      players(initialState, {
+        type: 'PLAYER::ADD',
+      }),
+    ).toEqual([...initialState, { id: 2, name: 'Bro' }]);
+  });
+
   it('should handle PLAYER::UPDATE_NAME', () => {
     expect(
       players(initialState, {
