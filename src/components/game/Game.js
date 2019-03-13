@@ -46,26 +46,8 @@ class Game extends React.Component {
     });
   };
 
-  addPlayer = (name = 'Bro') => {
-    const { increaseNbPlayers } = this.props;
-    increaseNbPlayers();
-    return this.setState(state => ({
-      players: [...state.players, { id: state.players.length, name }],
-    }));
-  };
-
-  updatePlayerName = (id, newName) => this.setState((state) => {
-    const players = state.players.map((player) => {
-      if (player.id === id) {
-        return { ...player, name: newName };
-      }
-      return player;
-    });
-    return { players };
-  });
-
   render() {
-    const { players, open } = this.state;
+    const { open } = this.state;
     const {
       classes,
       gameType,
@@ -74,6 +56,9 @@ class Game extends React.Component {
       createRound,
       rounds,
       calculateTotalPoints,
+      players,
+      updatePlayerName,
+      addPlayer,
     } = this.props;
     return (
       <div>
@@ -83,8 +68,8 @@ class Game extends React.Component {
           <ScoreList
             rounds={rounds}
             players={players}
-            handleUpdatePlayerName={this.updatePlayerName}
-            handleAddPlayer={this.addPlayer}
+            handleUpdatePlayerName={updatePlayerName}
+            handleAddPlayer={addPlayer}
             allowAddPlayer={allowAddPlayer}
             calculateTotalPoints={calculateTotalPoints}
           />

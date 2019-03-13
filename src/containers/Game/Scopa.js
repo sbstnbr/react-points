@@ -3,8 +3,19 @@ import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
 
 export default function ScopaGame() {
+  const defaultPlayers = [
+    {
+      id: 0,
+      name: 'Jess',
+    },
+    {
+      id: 1,
+      name: 'Seb',
+    },
+  ];
   const [rounds, setRounds] = useState([]);
   const [nbPlayers, setNbPlayers] = useState(2);
+  const [players, setPlayers] = useState(defaultPlayers);
   const firstPlayerIdToServe = Math.floor(Math.random() * nbPlayers);
   const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
 
@@ -48,6 +59,21 @@ export default function ScopaGame() {
 
   const increaseNbPlayers = () => setNbPlayers(nbPlayers + 1);
 
+  const addPlayer = (name = 'Bro') => {
+    increaseNbPlayers();
+    return setPlayers([...players, { id: players.length, name }]);
+  };
+
+  const updatePlayerName = (id, newName) => {
+    const newPlayers = players.map((player) => {
+      if (player.id === id) {
+        return { ...player, name: newName };
+      }
+      return player;
+    });
+    return setPlayers(newPlayers);
+  };
+
   return (
     <Game
       gameType="Scopa"
@@ -56,6 +82,9 @@ export default function ScopaGame() {
       calculateTotalPoints={calculateTotalPoints}
       allowAddPlayer={allowAddPlayer}
       increaseNbPlayers={increaseNbPlayers}
+      players={players}
+      updatePlayerName={updatePlayerName}
+      addPlayer={addPlayer}
     >
       {rounds.map(round => (
         <ScopaRound

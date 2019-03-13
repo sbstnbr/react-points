@@ -4,9 +4,20 @@ import WistRound from '../../components/Round/WistRound';
 import WistRoundResult from '../../components/Round/WistRoundResult';
 
 export default function WistGame() {
+  const defaultPlayers = [
+    {
+      id: 0,
+      name: 'Jess',
+    },
+    {
+      id: 1,
+      name: 'Seb',
+    },
+  ];
+  const [players, setPlayers] = useState(defaultPlayers);
+
   const [rounds, setRounds] = useState([]);
   const [nbPlayers, setNbPlayers] = useState(2);
-
   const createRound = () => {
     const newRound = {
       id: rounds.length,
@@ -78,6 +89,21 @@ export default function WistGame() {
 
   const allowAddPlayer = rounds.length === 0;
 
+  const addPlayer = (name = 'Bro') => {
+    increaseNbPlayers();
+    return setPlayers([...players, { id: players.length, name }]);
+  };
+
+  const updatePlayerName = (id, newName) => {
+    const newPlayers = players.map((player) => {
+      if (player.id === id) {
+        return { ...player, name: newName };
+      }
+      return player;
+    });
+    return setPlayers(newPlayers);
+  };
+
   return (
     <Game
       gameType="Wist"
@@ -86,6 +112,9 @@ export default function WistGame() {
       calculateTotalPoints={calculateTotalPoints}
       rounds={rounds}
       increaseNbPlayers={increaseNbPlayers}
+      updatePlayerName={updatePlayerName}
+      addPlayer={addPlayer}
+      players={players}
     >
       {rounds.map(round => (
         <WistRound

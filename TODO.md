@@ -41,7 +41,9 @@
 - [x] Refactor structure
 - [x] Refactor the use of props in functions with destructuring
 - [x] Introduce constants
-- [ ] Setup redux
+- [x] Lift player state up
+- [ ] Unify state
+- [ ] Replace functions by reducers
 - [ ] Persist the state
 - [ ] Stick the score at the top
 - [ ] Add nbCards per round
