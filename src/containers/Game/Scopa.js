@@ -14,18 +14,19 @@ export default function ScopaGame() {
     },
   ];
   const [rounds, setRounds] = useState([]);
-  const [nbPlayers, setNbPlayers] = useState(2);
   const [players, setPlayers] = useState(defaultPlayers);
-  const firstPlayerIdToServe = Math.floor(Math.random() * nbPlayers);
+  const firstPlayerIdToServe = Math.floor(Math.random() * players.length);
   const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
 
-  const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(nextPlayerIdToServe === nbPlayers - 1 ? 0 : nextPlayerIdToServe + 1);
+  const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(
+    nextPlayerIdToServe === players.length - 1 ? 0 : nextPlayerIdToServe + 1,
+  );
 
   const createRound = () => {
     const newRound = {
       id: rounds.length,
       playerIdToServe: nextPlayerIdToServe,
-      result: new Array(nbPlayers).fill(0),
+      result: new Array(players.length).fill(0),
     };
     switchNextPlayerIdToServe();
     return setRounds(rounds.concat([newRound]));
@@ -57,12 +58,7 @@ export default function ScopaGame() {
 
   const allowAddPlayer = rounds.length === 0;
 
-  const increaseNbPlayers = () => setNbPlayers(nbPlayers + 1);
-
-  const addPlayer = (name = 'Bro') => {
-    increaseNbPlayers();
-    return setPlayers([...players, { id: players.length, name }]);
-  };
+  const addPlayer = (name = 'Bro') => setPlayers([...players, { id: players.length, name }]);
 
   const updatePlayerName = (id, newName) => {
     const newPlayers = players.map((player) => {
@@ -81,7 +77,6 @@ export default function ScopaGame() {
       rounds={rounds}
       calculateTotalPoints={calculateTotalPoints}
       allowAddPlayer={allowAddPlayer}
-      increaseNbPlayers={increaseNbPlayers}
       players={players}
       updatePlayerName={updatePlayerName}
       addPlayer={addPlayer}

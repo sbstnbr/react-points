@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createShallow } from '@material-ui/core/test-utils';
 
-import ScopaGame from './ScopaGame';
+import ScopaGame from './Scopa';
 
 const game = <ScopaGame />;
 const rounds = [{ id: 1, result: [3, 0] }, { id: 2, result: [5, 0] }];

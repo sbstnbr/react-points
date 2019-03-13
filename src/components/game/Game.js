@@ -26,16 +26,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: [
-        {
-          id: 0,
-          name: 'Jess',
-        },
-        {
-          id: 1,
-          name: 'Seb',
-        },
-      ],
       open: false,
     };
   }

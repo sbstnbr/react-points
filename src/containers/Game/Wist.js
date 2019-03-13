@@ -17,20 +17,17 @@ export default function WistGame() {
   const [players, setPlayers] = useState(defaultPlayers);
 
   const [rounds, setRounds] = useState([]);
-  const [nbPlayers, setNbPlayers] = useState(2);
   const createRound = () => {
     const newRound = {
       id: rounds.length,
       results: [],
       activeStep: 0,
     };
-    for (let index = 0; index < nbPlayers; index += 1) {
+    for (let index = 0; index < players.length; index += 1) {
       newRound.results.push({ playerId: index, bets: 0 });
     }
     return setRounds(rounds.concat([newRound]));
   };
-
-  const increaseNbPlayers = () => setNbPlayers(nbPlayers + 1);
 
   function increaseBets(roundId, playerId) {
     const newRounds = rounds.slice();
@@ -89,10 +86,7 @@ export default function WistGame() {
 
   const allowAddPlayer = rounds.length === 0;
 
-  const addPlayer = (name = 'Bro') => {
-    increaseNbPlayers();
-    return setPlayers([...players, { id: players.length, name }]);
-  };
+  const addPlayer = (name = 'Bro') => setPlayers([...players, { id: players.length, name }]);
 
   const updatePlayerName = (id, newName) => {
     const newPlayers = players.map((player) => {
@@ -111,7 +105,6 @@ export default function WistGame() {
       allowAddPlayer={allowAddPlayer}
       calculateTotalPoints={calculateTotalPoints}
       rounds={rounds}
-      increaseNbPlayers={increaseNbPlayers}
       updatePlayerName={updatePlayerName}
       addPlayer={addPlayer}
       players={players}
