@@ -10,3 +10,7 @@ export const playerUpdate = (id, name) => ({
   id,
   name,
 });
+
+export const roundScopaAdd = () => ({
+  type: types.ROUND_SCOPA_ADD,
+});

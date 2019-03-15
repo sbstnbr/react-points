@@ -8,7 +8,7 @@ const players = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+          id: state.reduce((maxId, player) => Math.max(player.id, maxId), -1) + 1,
           name: 'Bro',
         },
       ];
