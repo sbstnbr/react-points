@@ -50,7 +50,7 @@
 - [ ] Stick the score at the top
 - [ ] Add nbCards per round
 - [ ] Limit bets/done to nbOfCards per round
-- [ ] Fix context issue on iPhone
+- [x] Fix context issue on iPhone
 - [ ] Use objects with setters in state
 - [ ] Give a color to each player
 - [ ] CI with Github
