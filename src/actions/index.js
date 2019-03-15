@@ -1,8 +1,8 @@
 import * as types from '../constants/actionTypes';
 
-export const playerAdd = () => ({
+export const playerAdd = (name = 'Bro') => ({
   type: types.PLAYER_ADD,
-  name: 'Bro',
+  name,
 });
 
 export const playerUpdate = (id, name) => ({

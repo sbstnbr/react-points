@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
+import playersReducer from '../../reducers/players';
+import { playerAdd, playerUpdate } from '../../actions';
 
 export default function ScopaGame() {
   const defaultPlayers = [
@@ -14,7 +16,7 @@ export default function ScopaGame() {
     },
   ];
   const [rounds, setRounds] = useState([]);
-  const [players, setPlayers] = useState(defaultPlayers);
+  const [players, dispatch] = useReducer(playersReducer, defaultPlayers);
   const firstPlayerIdToServe = Math.floor(Math.random() * players.length);
   const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
 
@@ -58,17 +60,9 @@ export default function ScopaGame() {
 
   const allowAddPlayer = rounds.length === 0;
 
-  const addPlayer = (name = 'Bro') => setPlayers([...players, { id: players.length, name }]);
+  const addPlayer = name => dispatch(playerAdd(name));
 
-  const updatePlayerName = (id, newName) => {
-    const newPlayers = players.map((player) => {
-      if (player.id === id) {
-        return { ...player, name: newName };
-      }
-      return player;
-    });
-    return setPlayers(newPlayers);
-  };
+  const updatePlayerName = (id, newName) => dispatch(playerUpdate(id, newName));
 
   return (
     <Game
