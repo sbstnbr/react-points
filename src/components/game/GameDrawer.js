@@ -8,8 +8,23 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PollIcon from '@material-ui/icons/Poll';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import GameAnimatedIcon from './GameAnimatedIcon';
 
-const GameDrawer = ({ open, toggleDrawer }) => {
+const styles = {
+  drawer: {
+    width: '250px',
+    height: '100%',
+    position: 'relative',
+  },
+  icon: {
+    width: '100%',
+    position: 'absolute',
+    bottom: '20px',
+  },
+};
+
+const GameDrawer = ({ open, toggleDrawer, classes }) => {
   const gameList = (
     <div>
       <List>
@@ -33,9 +48,12 @@ const GameDrawer = ({ open, toggleDrawer }) => {
         role="button"
         onClick={() => toggleDrawer(false)}
         onKeyDown={() => toggleDrawer(false)}
-        style={{ width: '250px' }}
+        className={classes.drawer}
       >
         {gameList}
+        <div className={classes.icon}>
+          <GameAnimatedIcon />
+        </div>
       </div>
     </SwipeableDrawer>
   );
@@ -46,4 +64,4 @@ GameDrawer.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
 };
 
-export default GameDrawer;
+export default withStyles(styles)(GameDrawer);

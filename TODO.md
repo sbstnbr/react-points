@@ -42,6 +42,8 @@
 - [x] Refactor the use of props in functions with destructuring
 - [x] Introduce constants
 - [x] Lift player state up
+- [x] Add animated icons
+- [ ] Write round reducers
 - [ ] Unify state
 - [ ] Replace functions by reducers
 - [ ] Persist the state
