@@ -1,10 +1,14 @@
 import scopa from './scopa';
-import * as actions from '../../actions';
+import defaultPlayers from '../constants/defaultValues';
+import * as actions from '../actions';
 
-const initialState = [];
+const initialState = {
+  rounds: [],
+  players: defaultPlayers,
+};
 const defaultRound = {
-  id: true,
-  playerIdToServe: true,
+  id: 0,
+  // playerIdToServe: true,
   result: new Array(2).fill(0),
 };
 
@@ -13,8 +17,9 @@ describe('scopa rounds reducers', () => {
     expect(scopa(undefined, {})).toEqual(initialState);
   });
 
-  xit('should handle ROUND_SCOPA_ADD', () => {
-    expect(scopa([], actions.roundScopaAdd())).toEqual([defaultRound]);
+  it('should handle ROUND_SCOPA_ADD', () => {
+    const expected = { ...initialState, rounds: [defaultRound] };
+    expect(scopa(undefined, actions.roundScopaAdd())).toEqual(expected);
   });
 
   // it('should handle PLAYER_UPDATE', () => {
