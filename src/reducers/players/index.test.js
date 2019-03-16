@@ -1,7 +1,8 @@
-import players from './players';
-import * as actions from '../actions';
+import players from './index';
+import * as actions from '../../actions';
+import defaultPlayers from '../../constants/defaultValues';
 
-const initialState = [{ id: 0, name: 'Jess' }, { id: 1, name: 'Seb' }];
+const initialState = defaultPlayers;
 
 describe('player reducers', () => {
   it('should have a default state', () => {

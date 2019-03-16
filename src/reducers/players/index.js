@@ -1,6 +1,7 @@
-import { PLAYER_ADD, PLAYER_UPDATE } from '../constants/actionTypes';
+import { PLAYER_ADD, PLAYER_UPDATE } from '../../constants/actionTypes';
+import defaultPlayers from '../../constants/defaultValues';
 
-const initialState = [{ id: 0, name: 'Jess' }, { id: 1, name: 'Seb' }];
+const initialState = defaultPlayers;
 
 const players = (state = initialState, action) => {
   switch (action.type) {

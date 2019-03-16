@@ -3,18 +3,9 @@ import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
 import playersReducer from '../../reducers/players';
 import { playerAdd, playerUpdate } from '../../actions';
+import defaultPlayers from '../../constants/defaultValues';
 
 export default function ScopaGame() {
-  const defaultPlayers = [
-    {
-      id: 0,
-      name: 'Jess',
-    },
-    {
-      id: 1,
-      name: 'Seb',
-    },
-  ];
   const [rounds, setRounds] = useState([]);
   const [players, dispatch] = useReducer(playersReducer, defaultPlayers);
   const firstPlayerIdToServe = Math.floor(Math.random() * players.length);
