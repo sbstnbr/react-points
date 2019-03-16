@@ -19,3 +19,8 @@ export const roundScopaPointAdd = (roundId, playerId) => ({
   roundId,
   playerId,
 });
+export const roundScopaReset = (roundId, playerId) => ({
+  type: types.ROUND_SCOPA_RESET,
+  roundId,
+  playerId,
+});

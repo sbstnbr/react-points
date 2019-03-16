@@ -24,10 +24,17 @@ describe('actions', () => {
       });
     });
     it('should create a ROUND_SCOPA_POINT_ADD action', () => {
-      expect(actions.roundScopaPointAdd(0, 1)).toEqual({
+      expect(actions.roundScopaPointAdd(1, 2)).toEqual({
         type: types.ROUND_SCOPA_POINT_ADD,
-        roundId: 0,
-        playerId: 1,
+        roundId: 1,
+        playerId: 2,
+      });
+    });
+    it('should create a ROUND_SCOPA_RESET action', () => {
+      expect(actions.roundScopaReset(1, 2)).toEqual({
+        type: types.ROUND_SCOPA_RESET,
+        roundId: 1,
+        playerId: 2,
       });
     });
   });
