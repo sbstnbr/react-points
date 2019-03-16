@@ -11,6 +11,7 @@ const defaultRound = {
   // playerIdToServe: true,
   result: new Array(2).fill(0),
 };
+const stateWithARound = { ...initialState, rounds: [defaultRound] };
 
 describe('scopa rounds reducers', () => {
   it('should have a default state', () => {
@@ -18,14 +19,13 @@ describe('scopa rounds reducers', () => {
   });
 
   it('should handle ROUND_SCOPA_ADD', () => {
-    const expected = { ...initialState, rounds: [defaultRound] };
-    expect(scopa(undefined, actions.roundScopaAdd())).toEqual(expected);
+    expect(scopa(undefined, actions.roundScopaAdd())).toEqual(stateWithARound);
   });
 
-  // it('should handle PLAYER_UPDATE', () => {
-  //   expect(players(initialState, actions.playerUpdate(1, 'Bro'))).toEqual([
-  //     { id: 0, name: 'Jess' },
-  //     { id: 1, name: 'Bro' },
-  //   ]);
-  // });
+  it('should handle ROUND_SCOPA_POINT_ADD', () => {
+    const expectedRound = { ...defaultRound };
+    expectedRound.result[0] = 1;
+    const expected = { ...initialState, rounds: [expectedRound] };
+    expect(scopa(stateWithARound, actions.roundScopaPointAdd(0, 0))).toEqual(expected);
+  });
 });

@@ -16,6 +16,11 @@ const scopa = (state = initialState, action) => {
           result: new Array(state.players.length).fill(0),
         }),
       });
+    case types.ROUND_SCOPA_POINT_ADD: {
+      const newRounds = state.rounds.slice();
+      newRounds[action.roundId].result[action.playerId] += 1;
+      return { ...state, rounds: newRounds };
+    }
     default:
       return state;
   }

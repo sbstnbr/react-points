@@ -23,5 +23,12 @@ describe('actions', () => {
         type: types.ROUND_SCOPA_ADD,
       });
     });
+    it('should create a ROUND_SCOPA_POINT_ADD action', () => {
+      expect(actions.roundScopaPointAdd(0, 1)).toEqual({
+        type: types.ROUND_SCOPA_POINT_ADD,
+        roundId: 0,
+        playerId: 1,
+      });
+    });
   });
 });
