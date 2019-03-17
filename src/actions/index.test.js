@@ -17,7 +17,7 @@ describe('actions', () => {
       });
     });
   });
-  describe('rounds', () => {
+  describe('scopa', () => {
     it('should create a ROUND_SCOPA_ADD action', () => {
       expect(actions.roundScopaAdd()).toEqual({
         type: types.ROUND_SCOPA_ADD,
@@ -35,6 +35,12 @@ describe('actions', () => {
         type: types.ROUND_SCOPA_RESET,
         roundId: 1,
         playerId: 2,
+      });
+    });
+    it('should create a FIRST_PLAYER_ID_TO_SERVE_SET action', () => {
+      expect(actions.firstPlayerIdToServe(1)).toEqual({
+        type: types.FIRST_PLAYER_ID_TO_SERVE_SET,
+        playerId: 1,
       });
     });
   });

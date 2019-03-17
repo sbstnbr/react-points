@@ -12,4 +12,5 @@ export const defaultPlayers = [
 export const scopaInitialState = {
   players: defaultPlayers,
   rounds: [],
+  firstPlayerIdToServe: 0,
 };

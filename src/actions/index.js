@@ -24,3 +24,8 @@ export const roundScopaReset = (roundId, playerId) => ({
   roundId,
   playerId,
 });
+
+export const firstPlayerIdToServe = playerId => ({
+  type: types.FIRST_PLAYER_ID_TO_SERVE_SET,
+  playerId,
+});

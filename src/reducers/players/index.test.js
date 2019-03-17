@@ -1,6 +1,6 @@
 import players from './index';
 import * as actions from '../../actions';
-import defaultPlayers from '../../constants/defaultValues';
+import { defaultPlayers } from '../../constants/defaultValues';
 
 const initialState = defaultPlayers;
 

@@ -2,7 +2,7 @@ import React, { useState, useReducer } from 'react';
 import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
 import { scopa } from '../../reducers';
-import { playerAdd, playerUpdate } from '../../actions';
+import * as actions from '../../actions';
 import { scopaInitialState } from '../../constants/defaultValues';
 
 export default function ScopaGame() {
@@ -16,57 +16,30 @@ export default function ScopaGame() {
   );
 
   const createRound = () => {
-    const newRound = {
-      id: rounds.length,
-      playerIdToServe: nextPlayerIdToServe,
-      result: new Array(state.players.length).fill(0),
-    };
     switchNextPlayerIdToServe();
-    return setRounds(rounds.concat([newRound]));
+    return dispatch(actions.roundScopaAdd());
   };
+  const addPoint = (roundId, playerId) => dispatch(actions.roundScopaPointAdd(roundId, playerId));
+  const resetRound = (roundId, playerId) => dispatch(actions.roundScopaReset(roundId, playerId));
 
-  const addPoint = (roundId, playerId) => {
-    const newRounds = rounds.slice();
-    newRounds[roundId].result[playerId] += 1;
-    return setRounds(newRounds);
-  };
+  const addPlayer = name => dispatch(actions.playerAdd(name));
+  const updatePlayerName = (id, newName) => dispatch(actions.playerUpdate(id, newName));
 
-  const resetRound = (roundId, playerId) => {
-    const newRounds = rounds.map((round) => {
-      if (round.id === roundId) {
-        const newResult = round.result.map((result, id) => {
-          if (id === playerId) {
-            return 0;
-          }
-          return result;
-        });
-        return { ...round, result: newResult };
-      }
-      return round;
-    });
-    return setRounds(newRounds);
-  };
-
+  const allowAddPlayer = state.rounds.length === 0;
   const calculateTotalPoints = (rounds, i) => rounds.map(round => round.result[i]).reduce((acc, val) => acc + val, 0);
-
-  const allowAddPlayer = rounds.length === 0;
-
-  const addPlayer = name => dispatch(playerAdd(name));
-
-  const updatePlayerName = (id, newName) => dispatch(playerUpdate(id, newName));
 
   return (
     <Game
       gameType="Scopa"
       createRound={createRound}
-      rounds={rounds}
+      rounds={state.rounds}
       calculateTotalPoints={calculateTotalPoints}
       allowAddPlayer={allowAddPlayer}
       players={state.players}
       updatePlayerName={updatePlayerName}
       addPlayer={addPlayer}
     >
-      {rounds.map(round => (
+      {state.rounds.map(round => (
         <ScopaRound
           key={round.id}
           id={round.id}

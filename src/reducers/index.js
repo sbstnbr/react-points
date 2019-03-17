@@ -1,5 +1,5 @@
 import { defaultPlayers } from '../constants/defaultValues';
-import scopaRounds from './rounds/scopa';
+import scopaGame from './game/scopa';
 import players from './players';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const scopa = (state = initialState, action) => ({
-  ...scopaRounds(state, action),
+  ...scopaGame(state, action),
   players: players(state.players, action),
 });
 

@@ -43,8 +43,11 @@
 - [x] Introduce constants
 - [x] Lift player state up
 - [x] Add animated icons
-- [ ] Write round reducers
-- [ ] Unify state
+- [x] Write round reducers
+- [x] Unify state
+
+- [ ] Fix long press bug
+
 - [ ] Replace functions by reducers
 - [ ] Persist the state
 - [ ] Stick the score at the top
