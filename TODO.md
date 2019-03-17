@@ -48,7 +48,8 @@
 
 - [ ] Fix long press bug
 
-- [ ] Replace functions by reducers
+- [x] Replace functions by reducers
+- [ ] Use reducers for wist
 - [ ] Persist the state
 - [ ] Stick the score at the top
 - [ ] Add nbCards per round
