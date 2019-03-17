@@ -1,25 +1,25 @@
 import React, { useState, useReducer } from 'react';
 import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
-import playersReducer from '../../reducers/players';
+import { scopa } from '../../reducers';
 import { playerAdd, playerUpdate } from '../../actions';
-import defaultPlayers from '../../constants/defaultValues';
+import { scopaInitialState } from '../../constants/defaultValues';
 
 export default function ScopaGame() {
   const [rounds, setRounds] = useState([]);
-  const [players, dispatch] = useReducer(playersReducer, defaultPlayers);
-  const firstPlayerIdToServe = Math.floor(Math.random() * players.length);
+  const [state, dispatch] = useReducer(scopa, scopaInitialState);
+  const firstPlayerIdToServe = Math.floor(Math.random() * state.players.length);
   const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
 
   const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(
-    nextPlayerIdToServe === players.length - 1 ? 0 : nextPlayerIdToServe + 1,
+    nextPlayerIdToServe === state.players.length - 1 ? 0 : nextPlayerIdToServe + 1,
   );
 
   const createRound = () => {
     const newRound = {
       id: rounds.length,
       playerIdToServe: nextPlayerIdToServe,
-      result: new Array(players.length).fill(0),
+      result: new Array(state.players.length).fill(0),
     };
     switchNextPlayerIdToServe();
     return setRounds(rounds.concat([newRound]));
@@ -62,7 +62,7 @@ export default function ScopaGame() {
       rounds={rounds}
       calculateTotalPoints={calculateTotalPoints}
       allowAddPlayer={allowAddPlayer}
-      players={players}
+      players={state.players}
       updatePlayerName={updatePlayerName}
       addPlayer={addPlayer}
     >

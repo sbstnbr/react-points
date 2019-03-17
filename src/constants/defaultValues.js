@@ -1,4 +1,4 @@
-const defaultPlayers = [
+export const defaultPlayers = [
   {
     id: 0,
     name: 'Jess',
@@ -9,4 +9,7 @@ const defaultPlayers = [
   },
 ];
 
-export default defaultPlayers;
+export const scopaInitialState = {
+  players: defaultPlayers,
+  rounds: [],
+};

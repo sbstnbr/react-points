@@ -1,12 +1,12 @@
-import * as types from '../constants/actionTypes';
-import defaultPlayers from '../constants/defaultValues';
+import * as types from '../../constants/actionTypes';
+import { defaultPlayers } from '../../constants/defaultValues';
 
 const initialState = {
   rounds: [],
   players: defaultPlayers,
 };
 
-const scopa = (state = initialState, action) => {
+const scopaRounds = (state = initialState, action) => {
   switch (action.type) {
     case types.ROUND_SCOPA_ADD:
       return {
@@ -52,4 +52,4 @@ const scopa = (state = initialState, action) => {
   }
 };
 
-export default scopa;
+export default scopaRounds;

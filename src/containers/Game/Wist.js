@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Game from '../../components/Game/Game';
 import WistRound from '../../components/Round/WistRound';
 import WistRoundResult from '../../components/Round/WistRoundResult';
-import defaultPlayers from '../../constants/defaultValues';
+import { defaultPlayers } from '../../constants/defaultValues';
 
 export default function WistGame() {
   const [players, setPlayers] = useState(defaultPlayers);

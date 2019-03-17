@@ -1,5 +1,5 @@
 import { PLAYER_ADD, PLAYER_UPDATE } from '../../constants/actionTypes';
-import defaultPlayers from '../../constants/defaultValues';
+import { defaultPlayers } from '../../constants/defaultValues';
 
 const initialState = defaultPlayers;
 

@@ -1,6 +1,6 @@
 import scopa from './scopa';
-import defaultPlayers from '../constants/defaultValues';
-import * as actions from '../actions';
+import defaultPlayers from '../../constants/defaultValues';
+import * as actions from '../../actions';
 
 const initialState = {
   rounds: [],
