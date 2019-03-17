@@ -1,10 +1,10 @@
 import scopa from './scopa';
-import { defaultPlayers, scopaInitialState } from '../../constants/defaultValues';
+import { scopaInitialState } from '../../constants/defaultValues';
 import * as actions from '../../actions';
 
 const defaultRound = {
   id: 0,
-  // playerIdToServe: true,
+  playerIdToServe: 0,
   result: new Array(2).fill(0),
 };
 const stateWithARound = {
@@ -12,7 +12,7 @@ const stateWithARound = {
   rounds: [
     {
       id: 0,
-      // playerIdToServe: true,
+      playerIdToServe: 0,
       result: new Array(2).fill(0),
     },
   ],
@@ -23,8 +23,57 @@ describe('scopa rounds reducers', () => {
     expect(scopa(undefined, {})).toEqual(scopaInitialState);
   });
 
-  it('should handle ROUND_SCOPA_ADD', () => {
-    expect(scopa(scopaInitialState, actions.roundScopaAdd())).toEqual(stateWithARound);
+  it('should handle ROUND_SCOPA_ADD for the first round', () => {
+    const state = {
+      ...scopaInitialState,
+      firstPlayerIdToServe: 1,
+    };
+    const expectedRound = {
+      ...defaultRound,
+      playerIdToServe: 1,
+    };
+    const expectedState = {
+      ...state,
+      rounds: [expectedRound],
+    };
+    expect(scopa(state, actions.roundScopaAdd())).toEqual(expectedState);
+  });
+
+  it('should handle ROUND_SCOPA_ADD by incrementing the playerIdToServe', () => {
+    const state = {
+      ...scopaInitialState,
+      rounds: [{ ...defaultRound, playerIdToServe: 0 }],
+    };
+    const expectedRound = {
+      ...defaultRound,
+      id: 1,
+      playerIdToServe: 1,
+    };
+    const expectedState = {
+      ...state,
+      rounds: state.rounds.concat(expectedRound),
+    };
+    expect(scopa(state, actions.roundScopaAdd())).toEqual(expectedState);
+  });
+
+  it('should handle ROUND_SCOPA_ADD by reseting the playerIdToServe when greater than the number of players', () => {
+    const state = {
+      ...scopaInitialState,
+      rounds: [
+        { ...defaultRound, playerIdToServe: 0 },
+        { ...defaultRound, id: 1, playerIdToServe: 1 },
+      ],
+    };
+    const expectedRound = {
+      ...defaultRound,
+      id: 2,
+      playerIdToServe: 0,
+    };
+    const expectedState = {
+      ...state,
+      rounds: state.rounds.concat(expectedRound),
+    };
+    expect(scopa(state, actions.roundScopaAdd())).toEqual(expectedState);
   });
 
   it('should handle ROUND_SCOPA_POINT_ADD', () => {

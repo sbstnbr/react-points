@@ -5,15 +5,21 @@ const initialState = { ...scopaInitialState };
 
 const scopa = (state = initialState, action) => {
   switch (action.type) {
-    case types.ROUND_SCOPA_ADD:
+    case types.ROUND_SCOPA_ADD: {
+      let playerIdToServe = state.firstPlayerIdToServe; // For first round
+      if (state.rounds.length > 0) {
+        const lastPlayerIdToServe = state.rounds[state.rounds.length - 1].playerIdToServe;
+        playerIdToServe = lastPlayerIdToServe === state.players.length - 1 ? 0 : lastPlayerIdToServe + 1;
+      }
       return {
         ...state,
         rounds: state.rounds.concat({
           id: state.rounds.reduce((maxId, round) => Math.max(round.id, maxId), -1) + 1,
-          // playerIdToServe: nextPlayerIdToServe,
+          playerIdToServe,
           result: new Array(state.players.length).fill(0),
         }),
       };
+    }
     case types.ROUND_SCOPA_POINT_ADD: {
       const newRounds = state.rounds.map((round) => {
         if (round.id === action.roundId) {
