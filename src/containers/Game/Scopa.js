@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import Game from '../../components/Game/Game';
 import ScopaRound from '../../components/Round/ScopaRound';
 import { scopa } from '../../reducers';
@@ -6,17 +6,14 @@ import * as actions from '../../actions';
 import { scopaInitialState } from '../../constants/defaultValues';
 
 export default function ScopaGame() {
-  const [rounds, setRounds] = useState([]);
   const [state, dispatch] = useReducer(scopa, scopaInitialState);
   const firstPlayerIdToServe = Math.floor(Math.random() * state.players.length);
-  const [nextPlayerIdToServe, setNextPlayerIdToServe] = useState(firstPlayerIdToServe);
-
-  const switchNextPlayerIdToServe = () => setNextPlayerIdToServe(
-    nextPlayerIdToServe === state.players.length - 1 ? 0 : nextPlayerIdToServe + 1,
-  );
 
   const createRound = () => {
-    switchNextPlayerIdToServe();
+    if (state.rounds.length === 0) {
+      // TODO: Use effect
+      dispatch(actions.firstPlayerIdToServe(firstPlayerIdToServe));
+    }
     return dispatch(actions.roundScopaAdd());
   };
   const addPoint = (roundId, playerId) => dispatch(actions.roundScopaPointAdd(roundId, playerId));
