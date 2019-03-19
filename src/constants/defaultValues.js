@@ -24,3 +24,13 @@ export const wistInitialState = {
   players: defaultPlayers,
   rounds: [],
 };
+export const wistResult = playerId => ({
+  playerId,
+  bets: 0,
+  dones: undefined,
+});
+export const wistRound = (id, nbPlayer = 2) => ({
+  id,
+  results: Array.from(Array(nbPlayer).keys()).map(playerId => wistResult(playerId)),
+  activeStep: 0,
+});

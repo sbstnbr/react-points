@@ -43,6 +43,10 @@ export const roundWistBetsDecrease = (roundId, playerId) => ({
   roundId,
   playerId,
 });
+export const roundWistDonesInit = roundId => ({
+  type: types.ROUND_WIST_DONES_INIT,
+  roundId,
+});
 export const roundWistDonesIncrease = (roundId, playerId) => ({
   type: types.ROUND_WIST_DONES_INCREASE,
   roundId,

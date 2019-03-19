@@ -10,26 +10,100 @@ const wist = (state = initialState, action) => {
         ...state,
         rounds: state.rounds.concat({
           id: state.rounds.reduce((maxId, round) => Math.max(round.id, maxId), -1) + 1,
-          results: [],
+          results: Array.from(Array(state.players.length).keys()).map(playerId => ({
+            playerId,
+            bets: 0,
+            dones: undefined,
+          })),
           activeStep: 0,
         }),
       };
     }
-    // case types.ROUND_SCOPA_POINT_ADD: {
-    //   const newRounds = state.rounds.map((round) => {
-    //     if (round.id === action.roundId) {
-    //       const newResult = round.result.map((result, id) => {
-    //         if (id === action.playerId) {
-    //           return result + 1;
-    //         }
-    //         return result;
-    //       });
-    //       return { ...round, result: newResult };
-    //     }
-    //     return round;
-    //   });
-    //   return { ...state, rounds: newRounds };
-    // }
+    case types.ROUND_WIST_BETS_INCREASE: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          const newResults = round.results.map((result, id) => {
+            if (id === action.playerId) {
+              return {
+                ...result,
+                bets: result.bets + 1,
+              };
+            }
+            return result;
+          });
+          return { ...round, results: newResults };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
+    case types.ROUND_WIST_BETS_DECREASE: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          const newResults = round.results.map((result, id) => {
+            if (id === action.playerId) {
+              return {
+                ...result,
+                bets: result.bets - 1,
+              };
+            }
+            return result;
+          });
+          return { ...round, results: newResults };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
+    case types.ROUND_WIST_DONES_INIT: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          const newResults = round.results.map(result => ({
+            ...result,
+            dones: 0,
+          }));
+          return { ...round, results: newResults };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
+    case types.ROUND_WIST_DONES_INCREASE: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          const newResults = round.results.map((result, id) => {
+            if (id === action.playerId) {
+              return {
+                ...result,
+                dones: result.dones + 1,
+              };
+            }
+            return result;
+          });
+          return { ...round, results: newResults };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
+    case types.ROUND_WIST_DONES_DECREASE: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          const newResults = round.results.map((result, id) => {
+            if (id === action.playerId) {
+              return {
+                ...result,
+                dones: result.dones - 1,
+              };
+            }
+            return result;
+          });
+          return { ...round, results: newResults };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
     // case types.ROUND_SCOPA_RESET: {
     //   const newRounds = state.rounds.map((round) => {
     //     if (round.id === action.roundId) {

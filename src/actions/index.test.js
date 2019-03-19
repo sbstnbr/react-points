@@ -64,6 +64,12 @@ describe('actions', () => {
         playerId: 2,
       });
     });
+    it('should create a ROUND_WIST_DONES_INIT action', () => {
+      expect(actions.roundWistDonesInit(1)).toEqual({
+        type: types.ROUND_WIST_DONES_INIT,
+        roundId: 1,
+      });
+    });
     it('should create a ROUND_WIST_DONES_INCREASE action', () => {
       expect(actions.roundWistDonesIncrease(1, 2)).toEqual({
         type: types.ROUND_WIST_DONES_INCREASE,
