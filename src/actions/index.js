@@ -29,3 +29,7 @@ export const firstPlayerIdToServe = playerId => ({
   type: types.FIRST_PLAYER_ID_TO_SERVE_SET,
   playerId,
 });
+
+export const roundWistAdd = () => ({
+  type: types.ROUND_WIST_ADD,
+});

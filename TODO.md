@@ -45,9 +45,6 @@
 - [x] Add animated icons
 - [x] Write round reducers
 - [x] Unify state
-
-- [ ] Fix long press bug
-
 - [x] Replace functions by reducers
 - [ ] Use reducers for wist
 - [ ] Persist the state

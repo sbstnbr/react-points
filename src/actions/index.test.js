@@ -44,4 +44,11 @@ describe('actions', () => {
       });
     });
   });
+  describe('wist', () => {
+    it('should create a ROUND_WIST_ADD action', () => {
+      expect(actions.roundWistAdd()).toEqual({
+        type: types.ROUND_WIST_ADD,
+      });
+    });
+  });
 });

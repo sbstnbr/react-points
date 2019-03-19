@@ -14,3 +14,13 @@ export const scopaInitialState = {
   rounds: [],
   firstPlayerIdToServe: 0,
 };
+
+export const scopa = {
+  defaultState: scopaInitialState,
+  // defaultRound: scopaDefaultRound,
+};
+
+export const wistInitialState = {
+  players: defaultPlayers,
+  rounds: [],
+};
