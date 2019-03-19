@@ -50,5 +50,39 @@ describe('actions', () => {
         type: types.ROUND_WIST_ADD,
       });
     });
+    it('should create a ROUND_WIST_BETS_INCREASE action', () => {
+      expect(actions.roundWistBetsIncrease(1, 2)).toEqual({
+        type: types.ROUND_WIST_BETS_INCREASE,
+        roundId: 1,
+        playerId: 2,
+      });
+    });
+    it('should create a ROUND_WIST_BETS_DECREASE action', () => {
+      expect(actions.roundWistBetsDecrease(1, 2)).toEqual({
+        type: types.ROUND_WIST_BETS_DECREASE,
+        roundId: 1,
+        playerId: 2,
+      });
+    });
+    it('should create a ROUND_WIST_DONES_INCREASE action', () => {
+      expect(actions.roundWistDonesIncrease(1, 2)).toEqual({
+        type: types.ROUND_WIST_DONES_INCREASE,
+        roundId: 1,
+        playerId: 2,
+      });
+    });
+    it('should create a ROUND_WIST_DONES_DECREASE action', () => {
+      expect(actions.roundWistDonesDecrease(1, 2)).toEqual({
+        type: types.ROUND_WIST_DONES_DECREASE,
+        roundId: 1,
+        playerId: 2,
+      });
+    });
+    it('should create a ROUND_WIST_ACTIVE_STEP_SWITCH action', () => {
+      expect(actions.roundWistActiveStepSwitch(1)).toEqual({
+        type: types.ROUND_WIST_ACTIVE_STEP_SWITCH,
+        roundId: 1,
+      });
+    });
   });
 });
