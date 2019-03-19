@@ -104,26 +104,18 @@ const wist = (state = initialState, action) => {
       });
       return { ...state, rounds: newRounds };
     }
-    // case types.ROUND_SCOPA_RESET: {
-    //   const newRounds = state.rounds.map((round) => {
-    //     if (round.id === action.roundId) {
-    //       const newResult = round.result.map((result, id) => {
-    //         if (id === action.playerId) {
-    //           return 0;
-    //         }
-    //         return result;
-    //       });
-    //       return { ...round, result: newResult };
-    //     }
-    //     return round;
-    //   });
-    //   return { ...state, rounds: newRounds };
-    // }
-    // case types.FIRST_PLAYER_ID_TO_SERVE_SET:
-    //   return {
-    //     ...state,
-    //     firstPlayerIdToServe: action.playerId,
-    //   };
+    case types.ROUND_WIST_ACTIVE_STEP_SWITCH: {
+      const newRounds = state.rounds.map((round) => {
+        if (round.id === action.roundId) {
+          return {
+            ...round,
+            activeStep: round.activeStep === 0 ? 1 : 0,
+          };
+        }
+        return round;
+      });
+      return { ...state, rounds: newRounds };
+    }
     default:
       return state;
   }

@@ -51,4 +51,18 @@ describe('wist rounds reducers', () => {
     excepted.rounds[0].results[1].dones = -1;
     expect(wist(state, actions.roundWistDonesDecrease(0, 1))).toEqual(excepted);
   });
+  it('should handle ROUND_WIST_ACTIVE_STEP_SWITCH', () => {
+    const state = { ...wistStateWithARound };
+    const excepted = {
+      ...wistInitialState,
+      rounds: [
+        {
+          ...wistRound(0),
+          activeStep: 1,
+        },
+      ],
+    };
+    expect(wist(state, actions.roundWistActiveStepSwitch(0))).toEqual(excepted);
+    expect(wist(excepted, actions.roundWistActiveStepSwitch(0))).toEqual(state);
+  });
 });
