@@ -58,10 +58,15 @@ const wist = (state = initialState, action) => {
     case types.ROUND_WIST_DONES_INIT: {
       const newRounds = state.rounds.map((round) => {
         if (round.id === action.roundId) {
-          const newResults = round.results.map(result => ({
-            ...result,
-            dones: 0,
-          }));
+          const newResults = round.results.map((result) => {
+            if (!result.dones) {
+              return {
+                ...result,
+                dones: result.bets,
+              };
+            }
+            return result;
+          });
           return { ...round, results: newResults };
         }
         return round;
@@ -109,7 +114,7 @@ const wist = (state = initialState, action) => {
         if (round.id === action.roundId) {
           return {
             ...round,
-            activeStep: round.activeStep === 0 ? 1 : 0,
+            activeStep: action.step,
           };
         }
         return round;

@@ -30,11 +30,13 @@ describe('wist rounds reducers', () => {
     excepted.rounds[0].results[1].bets = -1;
     expect(wist(state, actions.roundWistBetsDecrease(0, 1))).toEqual(excepted);
   });
-  it('should handle ROUND_WIST_DONES_INIT', () => {
-    const state = { ...wistStateWithARound };
+  it('should handle ROUND_WIST_DONES_INIT if dones are not defined', () => {
+    const state = { ...wistInitialState, rounds: [wistRound(0)] };
+    state.rounds[0].results[1].bets = 3;
     const excepted = { ...wistInitialState, rounds: [wistRound(0)] };
     excepted.rounds[0].results[0].dones = 0;
-    excepted.rounds[0].results[1].dones = 0;
+    excepted.rounds[0].results[1].dones = 3;
+    excepted.rounds[0].results[1].bets = 3;
     expect(wist(state, actions.roundWistDonesInit(0))).toEqual(excepted);
   });
   it('should handle ROUND_WIST_DONES_INCREASE', () => {
@@ -62,7 +64,7 @@ describe('wist rounds reducers', () => {
         },
       ],
     };
-    expect(wist(state, actions.roundWistActiveStepSwitch(0))).toEqual(excepted);
-    expect(wist(excepted, actions.roundWistActiveStepSwitch(0))).toEqual(state);
+    expect(wist(state, actions.roundWistActiveStepSwitch(0, 1))).toEqual(excepted);
+    expect(wist(excepted, actions.roundWistActiveStepSwitch(0, 0))).toEqual(state);
   });
 });

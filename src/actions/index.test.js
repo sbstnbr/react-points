@@ -85,9 +85,10 @@ describe('actions', () => {
       });
     });
     it('should create a ROUND_WIST_ACTIVE_STEP_SWITCH action', () => {
-      expect(actions.roundWistActiveStepSwitch(1)).toEqual({
+      expect(actions.roundWistActiveStepSwitch(1, 2)).toEqual({
         type: types.ROUND_WIST_ACTIVE_STEP_SWITCH,
         roundId: 1,
+        step: 2,
       });
     });
   });

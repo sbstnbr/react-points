@@ -57,7 +57,8 @@ export const roundWistDonesDecrease = (roundId, playerId) => ({
   roundId,
   playerId,
 });
-export const roundWistActiveStepSwitch = roundId => ({
+export const roundWistActiveStepSwitch = (roundId, step) => ({
   type: types.ROUND_WIST_ACTIVE_STEP_SWITCH,
   roundId,
+  step,
 });

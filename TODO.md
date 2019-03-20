@@ -47,6 +47,7 @@
 - [x] Unify state
 - [x] Replace functions by reducers
 - [ ] Use reducers for wist
+- [ ] Fix bug long press desktop + ios
 - [ ] Persist the state
 - [ ] Stick the score at the top
 - [ ] Add nbCards per round

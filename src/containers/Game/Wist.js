@@ -1,69 +1,31 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import Game from '../../components/Game/Game';
 import WistRound from '../../components/Round/WistRound';
 import WistRoundResult from '../../components/Round/WistRoundResult';
-import { defaultPlayers } from '../../constants/defaultValues';
+import { wistInitialState } from '../../constants/defaultValues';
+import * as actions from '../../actions';
+import { wist } from '../../reducers';
 
 export default function WistGame() {
-  const [players, setPlayers] = useState(defaultPlayers);
+  const [state, dispatch] = useReducer(wist, wistInitialState);
 
-  const [rounds, setRounds] = useState([]);
-  const createRound = () => {
-    const newRound = {
-      id: rounds.length,
-      results: [],
-      activeStep: 0,
-    };
-    for (let index = 0; index < players.length; index += 1) {
-      newRound.results.push({ playerId: index, bets: 0 });
-    }
-    return setRounds(rounds.concat([newRound]));
-  };
+  const createRound = () => dispatch(actions.roundWistAdd());
 
-  function increaseBets(roundId, playerId) {
-    const newRounds = rounds.slice();
-    newRounds[roundId].results[playerId].bets += 1;
-    setRounds(newRounds);
-  }
-  function increaseDones(roundId, playerId) {
-    const newRounds = rounds.slice();
-    newRounds[roundId].results[playerId].dones += 1;
-    setRounds(newRounds);
-  }
-  function decreaseBets(roundId, playerId) {
-    const newRounds = rounds.slice();
-    newRounds[roundId].results[playerId].bets -= 1;
-    setRounds(newRounds);
-  }
-  function decreaseDones(roundId, playerId) {
-    const newRounds = rounds.slice();
-    newRounds[roundId].results[playerId].dones -= 1;
-    setRounds(newRounds);
-  }
+  const increaseBets = (roundId, playerId) => dispatch(actions.roundWistBetsIncrease(roundId, playerId));
+  const decreaseBets = (roundId, playerId) => dispatch(actions.roundWistBetsDecrease(roundId, playerId));
+  const increaseDones = (roundId, playerId) => dispatch(actions.roundWistDonesIncrease(roundId, playerId));
+  const decreaseDones = (roundId, playerId) => dispatch(actions.roundWistDonesDecrease(roundId, playerId));
+
   const increaseFold = (roundId, playerId, activeStep) => () => (activeStep === 0 ? increaseBets(roundId, playerId) : increaseDones(roundId, playerId));
   const decreaseFold = (roundId, playerId, activeStep) => () => (activeStep === 0 ? decreaseBets(roundId, playerId) : decreaseDones(roundId, playerId));
 
   const switchActiveStep = roundId => step => () => {
-    const newRounds = rounds.map((round) => {
-      if (round.id === roundId) {
-        const updatedRound = { ...round };
-        updatedRound.results = round.results.map((result) => {
-          if (!result.dones) {
-            const updatedResult = { ...result };
-            updatedResult.dones = result.bets;
-            return updatedResult;
-          }
-          return result;
-        });
-        return { ...updatedRound, activeStep: step };
-      }
-      return round;
-    });
-    setRounds(newRounds);
+    dispatch(actions.roundWistDonesInit(roundId));
+    return dispatch(actions.roundWistActiveStepSwitch(roundId, step));
   };
 
   const calculatePoints = (roundId, playerId) => {
-    const result = rounds[roundId].results[playerId];
+    const result = state.rounds[roundId].results[playerId];
     if (typeof result.bets !== 'undefined' && typeof result.dones !== 'undefined') {
       if (result.bets === result.dones) {
         return 10 + 10 * result.bets;
@@ -75,19 +37,11 @@ export default function WistGame() {
 
   const calculateTotalPoints = (roundList, playerId) => roundList.map(round => calculatePoints(round.id, playerId)).reduce((a, b) => a + b, 0);
 
-  const allowAddPlayer = rounds.length === 0;
+  const allowAddPlayer = state.rounds.length === 0;
 
-  const addPlayer = (name = 'Bro') => setPlayers([...players, { id: players.length, name }]);
+  const addPlayer = name => dispatch(actions.playerAdd(name));
 
-  const updatePlayerName = (id, newName) => {
-    const newPlayers = players.map((player) => {
-      if (player.id === id) {
-        return { ...player, name: newName };
-      }
-      return player;
-    });
-    return setPlayers(newPlayers);
-  };
+  const updatePlayerName = (id, name) => dispatch(actions.playerUpdate(id, name));
 
   return (
     <Game
@@ -95,12 +49,12 @@ export default function WistGame() {
       createRound={createRound}
       allowAddPlayer={allowAddPlayer}
       calculateTotalPoints={calculateTotalPoints}
-      rounds={rounds}
+      rounds={state.rounds}
       updatePlayerName={updatePlayerName}
       addPlayer={addPlayer}
-      players={players}
+      players={state.players}
     >
-      {rounds.map(round => (
+      {state.rounds.map(round => (
         <WistRound
           key={round.id}
           id={round.id}

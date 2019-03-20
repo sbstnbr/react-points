@@ -1,5 +1,6 @@
 import { defaultPlayers } from '../constants/defaultValues';
 import scopaGame from './game/scopa';
+import wistGame from './game/wist';
 import players from './players';
 
 const initialState = {
@@ -12,4 +13,7 @@ export const scopa = (state = initialState, action) => ({
   players: players(state.players, action),
 });
 
-export const wist = (state = initialState, action) => state;
+export const wist = (state = initialState, action) => ({
+  ...wistGame(state, action),
+  players: players(state.players, action),
+});
