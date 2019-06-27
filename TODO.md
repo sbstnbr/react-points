@@ -46,7 +46,7 @@
 - [x] Write round reducers
 - [x] Unify state
 - [x] Replace functions by reducers
-- [ ] Use reducers for wist
+- [x] Use reducers for wist
 - [ ] Fix bug long press desktop + ios
 - [ ] Persist the state
 - [ ] Stick the score at the top
@@ -54,5 +54,4 @@
 - [ ] Limit bets/done to nbOfCards per round
 - [x] Fix context issue on iPhone
 - [ ] Use objects with setters in state
-- [ ] Give a color to each player
 - [ ] CI with Github

@@ -15,10 +15,10 @@ export const scopaInitialState = {
   firstPlayerIdToServe: 0,
 };
 
-export const scopa = {
-  defaultState: scopaInitialState,
-  // defaultRound: scopaDefaultRound,
-};
+export const scopaRound = (id, nbPlayer = 2) => ({
+  id,
+  results: new Array(nbPlayer).fill(0),
+});
 
 export const wistInitialState = {
   players: defaultPlayers,

@@ -19,9 +19,13 @@ const styles = theme => ({
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
+    padding: '0 0 6px 0',
   },
   expandOpen: {
     transform: 'rotate(180deg)',
+  },
+  actions: {
+    padding: '0px',
   },
 });
 

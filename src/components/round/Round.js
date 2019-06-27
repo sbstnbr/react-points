@@ -15,9 +15,7 @@ const styles = {
 
 const Round = ({ classes, children }) => (
   <Grid item xs={12} className={classes.round}>
-    <Card raised elevation={10}>
-      {children}
-    </Card>
+    <Card elevation={10}>{children}</Card>
   </Grid>
 );
 

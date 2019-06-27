@@ -8,4 +8,5 @@ body {
   user-select: none; /* Standard syntax */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  background-color: rgb(247, 247, 247);
 }
