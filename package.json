@@ -5,13 +5,18 @@
   "dependencies": {
     "@material-ui/core": "^3.7.0",
     "@material-ui/icons": "^3.0.1",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^12.6.9",
+    "@types/react": "^16.8.24",
+    "@types/react-dom": "^16.8.5",
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,6 +36,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-lottie": "^1.2.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint-config-airbnb": "^17.1.0",

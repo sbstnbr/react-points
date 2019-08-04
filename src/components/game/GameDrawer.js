@@ -9,6 +9,7 @@ import PollIcon from '@material-ui/icons/Poll';
 import LocalCafeIcon from '@material-ui/icons/LocalCafe';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import GameAnimatedIcon from './GameAnimatedIcon';
 
 const styles = {
@@ -50,7 +51,10 @@ const GameDrawer = ({ open, toggleDrawer, classes }) => {
         onKeyDown={() => toggleDrawer(false)}
         className={classes.drawer}
       >
-        {gameList}
+        <Typography variant="h2">
+          {' '}
+          {gameList}
+        </Typography>
         <div className={classes.icon}>
           <GameAnimatedIcon />
         </div>

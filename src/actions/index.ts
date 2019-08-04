@@ -5,7 +5,7 @@ export const playerAdd = (name = 'Bro') => ({
   name,
 });
 
-export const playerUpdate = (id, name) => ({
+export const playerUpdate = (id: number, name: string) => ({
   type: types.PLAYER_UPDATE,
   id,
   name,
@@ -14,18 +14,18 @@ export const playerUpdate = (id, name) => ({
 export const roundScopaAdd = () => ({
   type: types.ROUND_SCOPA_ADD,
 });
-export const roundScopaPointAdd = (roundId, playerId) => ({
+export const roundScopaPointAdd = (roundId: number, playerId: number) => ({
   type: types.ROUND_SCOPA_POINT_ADD,
   roundId,
   playerId,
 });
-export const roundScopaReset = (roundId, playerId) => ({
+export const roundScopaReset = (roundId: number, playerId: number) => ({
   type: types.ROUND_SCOPA_RESET,
   roundId,
   playerId,
 });
 
-export const firstPlayerIdToServe = playerId => ({
+export const firstPlayerIdToServe = (playerId: number) => ({
   type: types.FIRST_PLAYER_ID_TO_SERVE_SET,
   playerId,
 });
@@ -33,31 +33,31 @@ export const firstPlayerIdToServe = playerId => ({
 export const roundWistAdd = () => ({
   type: types.ROUND_WIST_ADD,
 });
-export const roundWistBetsIncrease = (roundId, playerId) => ({
+export const roundWistBetsIncrease = (roundId: number, playerId: number) => ({
   type: types.ROUND_WIST_BETS_INCREASE,
   roundId,
   playerId,
 });
-export const roundWistBetsDecrease = (roundId, playerId) => ({
+export const roundWistBetsDecrease = (roundId: number, playerId: number) => ({
   type: types.ROUND_WIST_BETS_DECREASE,
   roundId,
   playerId,
 });
-export const roundWistDonesInit = roundId => ({
+export const roundWistDonesInit = (roundId: number) => ({
   type: types.ROUND_WIST_DONES_INIT,
   roundId,
 });
-export const roundWistDonesIncrease = (roundId, playerId) => ({
+export const roundWistDonesIncrease = (roundId: number, playerId: number) => ({
   type: types.ROUND_WIST_DONES_INCREASE,
   roundId,
   playerId,
 });
-export const roundWistDonesDecrease = (roundId, playerId) => ({
+export const roundWistDonesDecrease = (roundId: number, playerId: number) => ({
   type: types.ROUND_WIST_DONES_DECREASE,
   roundId,
   playerId,
 });
-export const roundWistActiveStepSwitch = (roundId, step) => ({
+export const roundWistActiveStepSwitch = (roundId: number, step: number) => ({
   type: types.ROUND_WIST_ACTIVE_STEP_SWITCH,
   roundId,
   step,

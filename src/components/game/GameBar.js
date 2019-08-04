@@ -6,12 +6,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 const GameBar = ({ toggleDrawer, gameType }) => (
-  <AppBar position="static">
+  <AppBar position="static" color="default">
     <Toolbar>
       <IconButton color="inherit" aria-label="Menu" onClick={() => toggleDrawer(true)}>
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" color="inherit">
+      <Typography variant="h1" color="inherit">
         {gameType}
       </Typography>
     </Toolbar>
