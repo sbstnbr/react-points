@@ -29,3 +29,4 @@ firebase-debug.log
 
 # React
 src/react-app-env.d.ts
+.env

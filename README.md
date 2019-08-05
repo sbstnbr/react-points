@@ -11,5 +11,14 @@ PWA written with React to count points in card games
 # Todo
 
 - [ ] Fix bug long press desktop + ios
+
 - [ ] Persist the state
-- [ ] Stick the score at the top
+
+  - [o] Add authentication https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/
+  - [ ] Push data to Firestore
+  - [ ] Display games from Firestore
+
+- [ ] Redesign
+
+  - Setup styled components
+  - Remove material ui
