@@ -30,7 +30,7 @@ const GameDrawer = ({ open, toggleDrawer, classes }) => {
     <div>
       <List>
         {['Scopa', 'Wist'].map((text, index) => (
-          <ListItem button key={text} component={Link} to={`/${text}`}>
+          <ListItem button key={text} component={Link} to={`/${text.toLowerCase()}`}>
             <ListItemIcon>{index % 2 === 0 ? <LocalCafeIcon /> : <PollIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
