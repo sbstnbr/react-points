@@ -16,7 +16,14 @@ class Firebase {
     app.initializeApp(config);
     this.auth = app.auth;
     this.db = app.firestore();
+    this.googleProvider = new app.auth.GoogleAuthProvider();
   }
+
+  doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
+
+  doCreateUserWithEmailAndPassword = async () => console.log('CONNECTED');
+
+  doSignOut = () => this.auth.signOut();
 }
 
 export default Firebase;

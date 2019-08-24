@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import GameScopa from './Game/Scopa';
 import GameWist from './Game/Wist';
+import SignUp from './SignUp';
 import * as routes from '../constants/routes';
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
         <Route exact path={routes.HOME} component={GameScopa} />
         <Route path={routes.SCOPA} component={GameScopa} />
         <Route path={routes.WIST} component={GameWist} />
+        <Route path={routes.LOGIN} component={SignUp} />
       </div>
     </Router>
   );
